@@ -1,0 +1,2769 @@
+//+------------------------------------------------------------------+
+//|                                        ROYAL TRADING INVESTMENTS |
+//|                        Copyright ©, ROYAL TRADING INVESTMENTS.   |
+//|                                                                  |
+//+------------------------------------------------------------------+
+#property copyright "Copyright ©, ROYAL TRADING INVESTMENTS"
+#property link       ""
+#property description " ADVANCED PROFESSIONAL EA "
+#property description "                           "
+#property description "TIMEFRAME H1, ALL PAIRS"
+#property description "                                            "
+//#property description "RECOMMENDED MINIMUM 100 USD CAPITAL                                     "
+#property description "                                     "                                      
+#property description "(+91) 6351618392 (ROYAL TRADING INVESTMENTS)"
+#property strict
+
+
+enum Typess { MarketBuy,
+              MarketSell
+          };
+          
+          
+int OrderT[100];
+#resource "\\Images\\Untitled.bmp"
+input Typess FirstOrderType = MarketBuy; // First Order Type
+ double Lots_OP_1 = 0.01;
+ double Lots_OP_2 = 0.02;
+ double Lots_OP_3 = 0.03;
+ double Lots_OP_4 = 0.04;
+ double Lots_OP_5 = 0.05;
+ double Lots_OP_6 = 0.06;
+ double Lots_OP_7 = 0.07;
+ double Lots_OP_8 = 0.08;
+ double Lots_OP_9 = 0.09;
+ double Lots_OP_10 = 0.10;
+ double Lots_OP_11 = 0.11;
+ double Lots_OP_12 = 0.12;
+ double Lots_OP_13 = 0.13;
+ double Lots_OP_14 = 0.14;
+ double Lots_OP_15 = 0.15;
+ double Lots_OP_16 = 0.16;
+ double Lots_OP_17 = 0.17;
+ double Lots_OP_18 = 0.18;
+ double Lots_OP_19 = 0.19;
+ double Lots_OP_20 = 0.20;
+ double Lots_OP_21 = 0.21;
+ double Lots_OP_22 = 0.22;
+ double Lots_OP_23 = 0.23;
+ double Lots_OP_24 = 0.24;
+ double Lots_OP_25 = 0.25;
+ double Lots_OP_26 = 0.26;
+ double Lots_OP_27 = 0.27;
+ double Lots_OP_28 = 0.28;
+ double Lots_OP_29 = 0.29;
+ double Lots_OP_30 = 0.30;
+ double Lots_OP_31 = 0.31;
+ double Lots_OP_32 = 0.32;
+ double Lots_OP_33 = 0.33;
+ double Lots_OP_34 = 0.34;
+ double Lots_OP_35 = 0.35;
+ double Lots_OP_36 = 0.36;
+ double Lots_OP_37 = 0.37;
+ double Lots_OP_38 = 0.38;
+ double Lots_OP_39 = 0.39;
+ double Lots_OP_40 = 0.40;
+ double Lots_OP_41 = 0.41;
+ double Lots_OP_42 = 0.42;
+ double Lots_OP_43 = 0.43;
+ double Lots_OP_44 = 0.44;
+ double Lots_OP_45 = 0.45;
+ double Lots_OP_46 = 0.46;
+ double Lots_OP_47 = 0.47;
+ double Lots_OP_48 = 0.48;
+ double Lots_OP_49 = 0.49;
+ double Lots_OP_50 = 0.50;
+ double Lots_OP_51 = 0.51;
+ double Lots_OP_52 = 0.52;
+ double Lots_OP_53 = 0.53;
+ double Lots_OP_54 = 0.54;
+ double Lots_OP_55 = 0.55;
+ double Lots_OP_56 = 0.56;
+ double Lots_OP_57 = 0.57;
+ double Lots_OP_58 = 0.58;
+ double Lots_OP_59 = 0.59;
+ double Lots_OP_60 = 0.60;
+ double Lots_OP_61 = 0.61;
+ double Lots_OP_62 = 0.62;
+ double Lots_OP_63 = 0.63;
+ double Lots_OP_64 = 0.64;
+ double Lots_OP_65 = 0.65;
+ double Lots_OP_66 = 0.66;
+ double Lots_OP_67 = 0.67;
+ double Lots_OP_68 = 0.68;
+ double Lots_OP_69 = 0.69;
+ double Lots_OP_70 = 0.70;
+ double Lots_OP_71 = 0.71;
+ double Lots_OP_72 = 0.72;
+ double Lots_OP_73 = 0.73;
+ double Lots_OP_74 = 0.74;
+ double Lots_OP_75 = 0.75;
+ double Lots_OP_76 = 0.76;
+ double Lots_OP_77 = 0.77;
+ double Lots_OP_78 = 0.78;
+ double Lots_OP_79 = 0.79;
+ double Lots_OP_80 = 0.80;
+ double Lots_OP_81 = 0.81;
+ double Lots_OP_82 = 0.82;
+ double Lots_OP_83 = 0.83;
+ double Lots_OP_84 = 0.84;
+ double Lots_OP_85 = 0.85;
+ double Lots_OP_86 = 0.86;
+ double Lots_OP_87 = 0.87;
+ double Lots_OP_88 = 0.88;
+ double Lots_OP_89 = 0.89;
+ double Lots_OP_90 = 0.90;
+ double Lots_OP_91 = 0.91;
+ double Lots_OP_92 = 0.92;
+ double Lots_OP_93 = 0.93;
+ double Lots_OP_94 = 0.94;
+ double Lots_OP_95 = 0.95;
+ double Lots_OP_96 = 0.96;
+ double Lots_OP_97 = 0.97;
+ double Lots_OP_98 = 0.98;
+ double Lots_OP_99 = 0.99;
+ double Lots_OP_100 =1.00;
+ double Lots_OP_101 = 1.01;
+ double Lots_OP_102 = 1.02;
+ double Lots_OP_103 = 1.03;
+ double Lots_OP_104 = 1.04;
+ double Lots_OP_105 = 1.05;
+ double Lots_OP_106 = 1.06;
+ double Lots_OP_107 = 1.07;
+ double Lots_OP_108 = 1.08;
+ double Lots_OP_109 = 1.09;
+ double Lots_OP_110 = 1.10;
+ double Lots_OP_111 = 1.11;
+ double Lots_OP_112 = 1.12;
+ double Lots_OP_113 = 1.13;
+ double Lots_OP_114 = 1.14;
+ double Lots_OP_115 = 1.15;
+ double Lots_OP_116 = 1.16;
+ double Lots_OP_117 = 1.17;
+ double Lots_OP_118 = 1.18;
+ double Lots_OP_119 = 1.19;
+ double Lots_OP_120 = 1.20;
+ double Lots_OP_121 = 1.21;
+ double Lots_OP_122 = 1.22;
+ double Lots_OP_123 = 1.23;
+ double Lots_OP_124 = 1.24;
+ double Lots_OP_125 = 1.25;
+ double Lots_OP_126 = 1.26;
+ double Lots_OP_127 = 1.27;
+ double Lots_OP_128 = 1.28;
+ double Lots_OP_129 = 1.29;
+ double Lots_OP_130 = 1.30;
+ double Lots_OP_131 = 1.31;
+ double Lots_OP_132 = 1.32;
+ double Lots_OP_133 = 1.33;
+ double Lots_OP_134 = 1.34;
+ double Lots_OP_135 = 1.35;
+ double Lots_OP_136 = 1.36;
+ double Lots_OP_137 = 1.37;
+ double Lots_OP_138 = 1.38;
+ double Lots_OP_139 = 1.39;
+ double Lots_OP_140 = 1.40;
+ double Lots_OP_141 = 1.41;
+ double Lots_OP_142 = 1.42;
+ double Lots_OP_143 = 1.43;
+ double Lots_OP_144 = 1.44;
+ double Lots_OP_145 = 1.45;
+ double Lots_OP_146 = 1.46;
+ double Lots_OP_147 = 1.47;
+ double Lots_OP_148 = 1.48;
+ double Lots_OP_149 = 1.49;
+ double Lots_OP_150 = 1.50;
+ double Lots_OP_151 = 1.51;
+ double Lots_OP_152 = 1.52;
+ double Lots_OP_153 = 1.53;
+ double Lots_OP_154 = 1.54;
+ double Lots_OP_155 = 1.55;
+ double Lots_OP_156 = 1.56;
+ double Lots_OP_157 = 1.57;
+ double Lots_OP_158 = 1.58;
+ double Lots_OP_159 = 1.59;
+ double Lots_OP_160 = 1.60;
+ double Lots_OP_161 = 1.61;
+ double Lots_OP_162 = 1.62;
+ double Lots_OP_163 = 1.63;
+ double Lots_OP_164 = 1.64;
+ double Lots_OP_165 = 1.65;
+ double Lots_OP_166 = 1.66;
+ double Lots_OP_167 = 1.67;
+ double Lots_OP_168 = 1.68;
+ double Lots_OP_169 = 1.69;
+ double Lots_OP_170 = 1.70;
+ double Lots_OP_171 = 1.71;
+ double Lots_OP_172 = 1.72;
+ double Lots_OP_173 = 1.73;
+ double Lots_OP_174 = 1.74;
+ double Lots_OP_175 = 1.75;
+ double Lots_OP_176 = 1.76;
+ double Lots_OP_177 = 1.77;
+ double Lots_OP_178 = 1.78;
+ double Lots_OP_179 = 1.79;
+ double Lots_OP_180 = 1.80;
+ double Lots_OP_181 = 1.81;
+ double Lots_OP_182 = 1.82;
+ double Lots_OP_183 = 1.83;
+ double Lots_OP_184 = 1.84;
+ double Lots_OP_185 = 1.85;
+ double Lots_OP_186 = 1.86;
+ double Lots_OP_187 = 1.87;
+ double Lots_OP_188 = 1.88;
+ double Lots_OP_189 = 1.89;
+ double Lots_OP_190 = 1.90;
+ double Lots_OP_191 = 1.91;
+ double Lots_OP_192 = 1.92;
+ double Lots_OP_193 = 1.93;
+ double Lots_OP_194 = 1.94;
+ double Lots_OP_195 = 1.95;
+ double Lots_OP_196 = 1.96;
+ double Lots_OP_197 = 1.97;
+ double Lots_OP_198 = 1.98;
+ double Lots_OP_199 = 1.99;
+ double Lots_OP_200 = 2.00;
+ double Lots_OP_201 = 2.01;
+ double Lots_OP_202 = 2.02;
+ double Lots_OP_203 = 2.03;
+ double Lots_OP_204 = 2.04;
+ double Lots_OP_205 = 2.05;
+ double Lots_OP_206 = 2.06;
+ double Lots_OP_207 = 2.07;
+ double Lots_OP_208 = 2.08;
+ double Lots_OP_209 = 2.09;
+ double Lots_OP_210 = 2.10;
+ double Lots_OP_211 = 2.11;
+ double Lots_OP_212 = 2.12;
+ double Lots_OP_213 = 2.13;
+ double Lots_OP_214 = 2.14;
+ double Lots_OP_215 = 2.15;
+ double Lots_OP_216 = 2.16;
+ double Lots_OP_217 = 2.17;
+ double Lots_OP_218 = 2.18;
+ double Lots_OP_219 = 2.19;
+ double Lots_OP_220 = 2.20;
+ double Lots_OP_221 = 2.21;
+ double Lots_OP_222 = 2.22;
+ double Lots_OP_223 = 2.23;
+ double Lots_OP_224 = 2.24;
+ double Lots_OP_225 = 2.25;
+ double Lots_OP_226 = 2.26;
+ double Lots_OP_227 = 2.27;
+ double Lots_OP_228 = 2.28;
+ double Lots_OP_229 = 2.29;
+ double Lots_OP_230 = 2.30;
+ double Lots_OP_231 = 2.31;
+ double Lots_OP_232 = 2.32;
+ double Lots_OP_233 = 2.33;
+ double Lots_OP_234 = 2.34;
+ double Lots_OP_235 = 2.35;
+ double Lots_OP_236 = 2.36;
+ double Lots_OP_237 = 2.37;
+ double Lots_OP_238 = 2.38;
+ double Lots_OP_239 = 2.39;
+ double Lots_OP_240 = 2.40;
+ double Lots_OP_241 = 2.41;
+ double Lots_OP_242 = 2.42;
+ double Lots_OP_243 = 2.43;
+ double Lots_OP_244 = 2.44;
+ double Lots_OP_245 = 2.45;
+ double Lots_OP_246 = 2.46;
+ double Lots_OP_247 = 2.47;
+ double Lots_OP_248 = 2.48;
+ double Lots_OP_249 = 2.49;
+ double Lots_OP_250 = 2.50;
+ double Lots_OP_251 = 2.51;
+ double Lots_OP_252 = 2.52;
+ double Lots_OP_253 = 2.53;
+ double Lots_OP_254 = 2.54;
+ double Lots_OP_255 = 2.55;
+ double Lots_OP_256 = 2.56;
+ double Lots_OP_257 = 2.57;
+ double Lots_OP_258 = 2.58;
+ double Lots_OP_259 = 2.59;
+ double Lots_OP_260 = 2.60;
+ double Lots_OP_261 = 2.61;
+ double Lots_OP_262 = 2.62;
+ double Lots_OP_263 = 2.63;
+ double Lots_OP_264 = 2.64;
+ double Lots_OP_265 = 2.65;
+ double Lots_OP_266 = 2.66;
+ double Lots_OP_267 = 2.67;
+ double Lots_OP_268 = 2.68;
+ double Lots_OP_269 = 2.69;
+ double Lots_OP_270 = 2.70;
+ double Lots_OP_271 = 2.71;
+ double Lots_OP_272 = 2.72;
+ double Lots_OP_273 = 2.73;
+ double Lots_OP_274 = 2.74;
+ double Lots_OP_275 = 2.75;
+ double Lots_OP_276 = 2.76;
+ double Lots_OP_277 = 2.77;
+ double Lots_OP_278 = 2.78;
+ double Lots_OP_279 = 2.79;
+ double Lots_OP_280 = 2.80;
+ double Lots_OP_281 = 2.81;
+ double Lots_OP_282 = 2.82;
+ double Lots_OP_283 = 2.83;
+ double Lots_OP_284 = 2.84;
+ double Lots_OP_285 = 2.85;
+ double Lots_OP_286 = 2.86;
+ double Lots_OP_287 = 2.87;
+ double Lots_OP_288 = 2.88;
+ double Lots_OP_289 = 2.89;
+ double Lots_OP_290 = 2.90;
+ double Lots_OP_291 = 2.91;
+ double Lots_OP_292 = 2.92;
+ double Lots_OP_293 = 2.93;
+ double Lots_OP_294 = 2.94;
+ double Lots_OP_295 = 2.95;
+ double Lots_OP_296 = 2.96;
+ double Lots_OP_297 = 2.97;
+ double Lots_OP_298 = 2.98;
+ double Lots_OP_299 = 2.99;
+ double Lots_OP_300 = 3.00;
+ double Lots_OP_301 = 3.01;
+ double Lots_OP_302 = 3.02;
+ double Lots_OP_303 = 3.03;
+ double Lots_OP_304 = 3.04;
+ double Lots_OP_305 = 3.05;
+ double Lots_OP_306 = 3.06;
+ double Lots_OP_307 = 3.07;
+ double Lots_OP_308 = 3.08;
+ double Lots_OP_309 = 3.09;
+ double Lots_OP_310 = 3.10;
+ double Lots_OP_311 = 3.11;
+ double Lots_OP_312 = 3.12;
+ double Lots_OP_313 = 3.13;
+ double Lots_OP_314 = 3.14;
+ double Lots_OP_315 = 3.15;
+ double Lots_OP_316 = 3.16;
+ double Lots_OP_317 = 3.17;
+ double Lots_OP_318 = 3.18;
+ double Lots_OP_319 = 3.19;
+ double Lots_OP_320 = 3.20;
+ double Lots_OP_321 = 3.21;
+ double Lots_OP_322 = 3.22;
+ double Lots_OP_323 = 3.23;
+ double Lots_OP_324 = 3.24;
+ double Lots_OP_325 = 3.25;
+ double Lots_OP_326 = 3.26;
+ double Lots_OP_327 = 3.27;
+ double Lots_OP_328 = 3.28;
+ double Lots_OP_329 = 3.29;
+ double Lots_OP_330 = 3.30;
+ double Lots_OP_331 = 3.31;
+ double Lots_OP_332 = 3.32;
+ double Lots_OP_333 = 3.33;
+ double Lots_OP_334 = 3.34;
+ double Lots_OP_335 = 3.35;
+ double Lots_OP_336 = 3.36;
+ double Lots_OP_337 = 3.37;
+ double Lots_OP_338 = 3.38;
+ double Lots_OP_339 = 3.39;
+ double Lots_OP_340 = 3.40;
+ double Lots_OP_341 = 3.41;
+ double Lots_OP_342 = 3.42;
+ double Lots_OP_343 = 3.43;
+ double Lots_OP_344 = 3.44;
+ double Lots_OP_345 = 3.45;
+ double Lots_OP_346 = 3.46;
+ double Lots_OP_347 = 3.47;
+ double Lots_OP_348 = 3.48;
+ double Lots_OP_349 = 3.49;
+ double Lots_OP_350 = 3.50;
+ double Lots_OP_351 = 3.51;
+ double Lots_OP_352 = 3.52;
+ double Lots_OP_353 = 3.53;
+ double Lots_OP_354 = 3.54;
+ double Lots_OP_355 = 3.55;
+ double Lots_OP_356 = 3.56;
+ double Lots_OP_357 = 3.57;
+ double Lots_OP_358 = 3.58;
+ double Lots_OP_359 = 3.59;
+ double Lots_OP_360 = 3.60;
+ double Lots_OP_361 = 3.61;
+ double Lots_OP_362 = 3.62;
+ double Lots_OP_363 = 3.63;
+ double Lots_OP_364 = 3.64;
+ double Lots_OP_365 = 3.65;
+ double Lots_OP_366 = 3.66;
+ double Lots_OP_367 = 3.67;
+ double Lots_OP_368 = 3.68;
+ double Lots_OP_369 = 3.69;
+
+
+
+
+
+ bool UseTakeProfit = false;
+ double TakeProfit_1 = 10;
+ double TakeProfit_2 = 10;
+ double TakeProfit_3 = 10;
+ double TakeProfit_4 = 10;
+ double TakeProfit_5 = 10;
+ double TakeProfit_6 = 10;
+ double TakeProfit_7 = 10;
+ double TakeProfit_8 = 10;
+ double TakeProfit_9 = 10;
+ double TakeProfit_10 = 10;
+ double TakeProfit_11 = 10;
+ double TakeProfit_12 = 10;
+ double TakeProfit_13 = 10;
+ double TakeProfit_14 = 10;
+ double TakeProfit_15 = 10;
+ double TakeProfit_16 = 10;
+ double TakeProfit_17 = 10;
+ double TakeProfit_18 = 10;
+ double TakeProfit_19 = 10;
+ double TakeProfit_20 = 10;
+ double TakeProfit_21 = 10;
+ double TakeProfit_22 = 10;
+ double TakeProfit_23 = 10;
+ double TakeProfit_24 = 10;
+ double TakeProfit_25 = 10;
+ double TakeProfit_26 = 10;
+ double TakeProfit_27 = 10;
+ double TakeProfit_28 = 10;
+ double TakeProfit_29 = 10;
+ double TakeProfit_30 = 10;
+ double TakeProfit_31 = 10;
+ double TakeProfit_32 = 10;
+ double TakeProfit_33 = 10;
+ double TakeProfit_34 = 10;
+ double TakeProfit_35 = 10;
+ double TakeProfit_36 = 10;
+ double TakeProfit_37 = 10;
+ double TakeProfit_38 = 10;
+ double TakeProfit_39 = 10;
+ double TakeProfit_40 = 10;
+ double TakeProfit_41 = 10;
+ double TakeProfit_42 = 10;
+ double TakeProfit_43 = 10;
+ double TakeProfit_44 = 10;
+ double TakeProfit_45 = 10;
+ double TakeProfit_46 = 10;
+ double TakeProfit_47 = 10;
+ double TakeProfit_48 = 10;
+ double TakeProfit_49 = 10;
+ double TakeProfit_50 = 10;
+ double TakeProfit_51 = 10;
+ double TakeProfit_52 = 10;
+ double TakeProfit_53 = 10;
+ double TakeProfit_54 = 10;
+ double TakeProfit_55 = 10;
+ double TakeProfit_56 = 10;
+ double TakeProfit_57 = 10;
+ double TakeProfit_58 = 10;
+ double TakeProfit_59 = 10;
+ double TakeProfit_60 = 10;
+ double TakeProfit_61 = 10;
+ double TakeProfit_62 = 10;
+ double TakeProfit_63 = 10;
+ double TakeProfit_64 = 10;
+ double TakeProfit_65 = 10;
+ double TakeProfit_66 = 10;
+ double TakeProfit_67 = 10;
+ double TakeProfit_68 = 10;
+ double TakeProfit_69 = 10;
+ double TakeProfit_70 = 10;
+ double TakeProfit_71 = 10;
+ double TakeProfit_72 = 10;
+ double TakeProfit_73 = 10;
+ double TakeProfit_74 = 10;
+ double TakeProfit_75 = 10;
+ double TakeProfit_76 = 10;
+ double TakeProfit_77 = 10;
+ double TakeProfit_78 = 10;
+ double TakeProfit_79 = 10;
+ double TakeProfit_80 = 10;
+ double TakeProfit_81 = 10;
+ double TakeProfit_82 = 10;
+ double TakeProfit_83 = 10;
+ double TakeProfit_84 = 10;
+ double TakeProfit_85 = 10;
+ double TakeProfit_86 = 10;
+ double TakeProfit_87 = 10;
+ double TakeProfit_88 = 10;
+ double TakeProfit_89 = 10;
+ double TakeProfit_90 = 10;
+ double TakeProfit_91 = 10;
+ double TakeProfit_92 = 10;
+ double TakeProfit_93 = 10;
+ double TakeProfit_94 = 10;
+ double TakeProfit_95 = 10;
+ double TakeProfit_96 = 10;
+ double TakeProfit_97 = 10;
+ double TakeProfit_98 = 10;
+ double TakeProfit_99 = 10;
+ double TakeProfit_100 = 10;
+ double TakeProfit_101 = 10;
+ double TakeProfit_102 = 10;
+ double TakeProfit_103 = 10;
+ double TakeProfit_104 = 10;
+ double TakeProfit_105 = 10;
+ double TakeProfit_106 = 10;
+ double TakeProfit_107 = 10;
+ double TakeProfit_108 = 10;
+ double TakeProfit_109 = 1.09;
+ double TakeProfit_110 = 1.10;
+ double TakeProfit_111 = 1.11;
+ double TakeProfit_112 = 1.12;
+ double TakeProfit_113 = 1.13;
+ double TakeProfit_114 = 1.14;
+ double TakeProfit_115 = 1.15;
+ double TakeProfit_116 = 1.16;
+ double TakeProfit_117 = 1.17;
+ double TakeProfit_118 = 1.18;
+ double TakeProfit_119 = 1.19;
+ double TakeProfit_120 = 1.20;
+ double TakeProfit_121 = 1.21;
+ double TakeProfit_122 = 1.22;
+ double TakeProfit_123 = 1.23;
+ double TakeProfit_124 = 1.24;
+ double TakeProfit_125 = 1.25;
+ double TakeProfit_126 = 1.26;
+ double TakeProfit_127 = 1.27;
+ double TakeProfit_128 = 1.28;
+ double TakeProfit_129 = 1.29;
+ double TakeProfit_130 = 1.30;
+ double TakeProfit_131 = 1.31;
+ double TakeProfit_132 = 1.32;
+ double TakeProfit_133 = 1.33;
+ double TakeProfit_134 = 1.34;
+ double TakeProfit_135 = 1.35;
+ double TakeProfit_136 = 1.36;
+ double TakeProfit_137 = 1.37;
+ double TakeProfit_138 = 1.38;
+ double TakeProfit_139 = 1.39;
+ double TakeProfit_140 = 1.40;
+ double TakeProfit_141 = 1.41;
+ double TakeProfit_142 = 1.42;
+ double TakeProfit_143 = 1.43;
+ double TakeProfit_144 = 1.44;
+ double TakeProfit_145 = 1.45;
+ double TakeProfit_146 = 1.46;
+ double TakeProfit_147 = 1.47;
+ double TakeProfit_148 = 1.48;
+ double TakeProfit_149 = 1.49;
+ double TakeProfit_150 = 1.50;
+ double TakeProfit_151 = 1.51;
+ double TakeProfit_152 = 1.52;
+ double TakeProfit_153 = 1.53;
+ double TakeProfit_154 = 1.54;
+ double TakeProfit_155 = 1.55;
+ double TakeProfit_156 = 1.56;
+ double TakeProfit_157 = 1.57;
+ double TakeProfit_158 = 1.58;
+ double TakeProfit_159 = 1.59;
+ double TakeProfit_160 = 1.60;
+ double TakeProfit_161 = 1.61;
+ double TakeProfit_162 = 1.62;
+ double TakeProfit_163 = 1.63;
+ double TakeProfit_164 = 1.64;
+ double TakeProfit_165 = 1.65;
+ double TakeProfit_166 = 1.66;
+ double TakeProfit_167 = 1.67;
+ double TakeProfit_168 = 1.68;
+ double TakeProfit_169 = 1.69;
+ double TakeProfit_170 = 1.70;
+ double TakeProfit_171 = 1.71;
+ double TakeProfit_172 = 1.72;
+ double TakeProfit_173 = 1.73;
+ double TakeProfit_174 = 1.74;
+ double TakeProfit_175 = 1.75;
+ double TakeProfit_176 = 1.76;
+ double TakeProfit_177 = 1.77;
+ double TakeProfit_178 = 1.78;
+ double TakeProfit_179 = 1.79;
+ double TakeProfit_180 = 1.80;
+ double TakeProfit_181 = 1.81;
+ double TakeProfit_182 = 1.82;
+ double TakeProfit_183 = 1.83;
+ double TakeProfit_184 = 1.84;
+ double TakeProfit_185 = 1.85;
+ double TakeProfit_186 = 1.86;
+ double TakeProfit_187 = 1.87;
+ double TakeProfit_188 = 1.88;
+ double TakeProfit_189 = 1.89;
+ double TakeProfit_190 = 1.90;
+ double TakeProfit_191 = 1.91;
+ double TakeProfit_192 = 1.92;
+ double TakeProfit_193 = 1.93;
+ double TakeProfit_194 = 1.94;
+ double TakeProfit_195 = 1.95;
+ double TakeProfit_196 = 1.96;
+ double TakeProfit_197 = 1.97;
+ double TakeProfit_198 = 1.98;
+ double TakeProfit_199 = 1.99;
+ double TakeProfit_200 = 2.00;
+ double TakeProfit_201 = 2.01;
+ double TakeProfit_202 = 2.02;
+ double TakeProfit_203 = 2.03;
+ double TakeProfit_204 = 2.04;
+ double TakeProfit_205 = 2.05;
+ double TakeProfit_206 = 2.06;
+ double TakeProfit_207 = 2.07;
+ double TakeProfit_208 = 2.08;
+ double TakeProfit_209 = 2.09;
+ double TakeProfit_210 = 2.10;
+ double TakeProfit_211 = 2.11;
+ double TakeProfit_212 = 2.12;
+ double TakeProfit_213 = 2.13;
+ double TakeProfit_214 = 2.14;
+ double TakeProfit_215 = 2.15;
+ double TakeProfit_216 = 2.16;
+ double TakeProfit_217 = 2.17;
+ double TakeProfit_218 = 2.18;
+ double TakeProfit_219 = 2.19;
+ double TakeProfit_220 = 2.20;
+ double TakeProfit_221 = 2.21;
+ double TakeProfit_222 = 2.22;
+ double TakeProfit_223 = 2.23;
+ double TakeProfit_224 = 2.24;
+ double TakeProfit_225 = 2.25;
+ double TakeProfit_226 = 2.26;
+ double TakeProfit_227 = 2.27;
+ double TakeProfit_228 = 2.28;
+ double TakeProfit_229 = 2.29;
+ double TakeProfit_230 = 2.30;
+ double TakeProfit_231 = 2.31;
+ double TakeProfit_232 = 2.32;
+ double TakeProfit_233 = 2.33;
+ double TakeProfit_234 = 2.34;
+ double TakeProfit_235 = 2.35;
+ double TakeProfit_236 = 2.36;
+ double TakeProfit_237 = 2.37;
+ double TakeProfit_238 = 2.38;
+ double TakeProfit_239 = 2.39;
+ double TakeProfit_240 = 2.40;
+ double TakeProfit_241 = 2.41;
+ double TakeProfit_242 = 2.42;
+ double TakeProfit_243 = 2.43;
+ double TakeProfit_244 = 2.44;
+ double TakeProfit_245 = 2.45;
+ double TakeProfit_246 = 2.46;
+ double TakeProfit_247 = 2.47;
+ double TakeProfit_248 = 2.48;
+ double TakeProfit_249 = 2.49;
+ double TakeProfit_250 = 2.50;
+ double TakeProfit_251 = 2.51;
+ double TakeProfit_252 = 2.52;
+ double TakeProfit_253 = 2.53;
+ double TakeProfit_254 = 2.54;
+ double TakeProfit_255 = 2.55;
+ double TakeProfit_256 = 2.56;
+ double TakeProfit_257 = 2.57;
+ double TakeProfit_258 = 2.58;
+ double TakeProfit_259 = 2.59;
+ double TakeProfit_260 = 2.60;
+ double TakeProfit_261 = 2.61;
+ double TakeProfit_262 = 2.62;
+ double TakeProfit_263 = 2.63;
+ double TakeProfit_264 = 2.64;
+ double TakeProfit_265 = 2.65;
+ double TakeProfit_266 = 2.66;
+ double TakeProfit_267 = 2.67;
+ double TakeProfit_268 = 2.68;
+ double TakeProfit_269 = 2.69;
+ double TakeProfit_270 = 2.70;
+ double TakeProfit_271 = 2.71;
+ double TakeProfit_272 = 2.72;
+ double TakeProfit_273 = 2.73;
+ double TakeProfit_274 = 2.74;
+ double TakeProfit_275 = 2.75;
+ double TakeProfit_276 = 2.76;
+ double TakeProfit_277 = 2.77;
+ double TakeProfit_278 = 2.78;
+ double TakeProfit_279 = 2.79;
+ double TakeProfit_280 = 2.80;
+ double TakeProfit_281 = 2.81;
+ double TakeProfit_282 = 2.82;
+ double TakeProfit_283 = 2.83;
+ double TakeProfit_284 = 2.84;
+ double TakeProfit_285 = 2.85;
+ double TakeProfit_286 = 2.86;
+ double TakeProfit_287 = 2.87;
+ double TakeProfit_288 = 2.88;
+ double TakeProfit_289 = 2.89;
+ double TakeProfit_290 = 2.90;
+ double TakeProfit_291 = 2.91;
+ double TakeProfit_292 = 2.92;
+ double TakeProfit_293 = 2.93;
+ double TakeProfit_294 = 2.94;
+ double TakeProfit_295 = 2.95;
+ double TakeProfit_296 = 2.96;
+ double TakeProfit_297 = 2.97;
+ double TakeProfit_298 = 2.98;
+ double TakeProfit_299 = 2.99;
+ double TakeProfit_300 = 3.00;
+ double TakeProfit_301 = 3.01;
+ double TakeProfit_302 = 3.02;
+ double TakeProfit_303 = 3.03;
+ double TakeProfit_304 = 3.04;
+ double TakeProfit_305 = 3.05;
+ double TakeProfit_306 = 3.06;
+ double TakeProfit_307 = 3.07;
+ double TakeProfit_308 = 3.08;
+ double TakeProfit_309 = 3.09;
+ double TakeProfit_310 = 3.10;
+ double TakeProfit_311 = 3.11;
+ double TakeProfit_312 = 3.12;
+ double TakeProfit_313 = 3.13;
+ double TakeProfit_314 = 3.14;
+ double TakeProfit_315 = 3.15;
+ double TakeProfit_316 = 3.16;
+ double TakeProfit_317 = 3.17;
+ double TakeProfit_318 = 3.18;
+ double TakeProfit_319 = 3.19;
+ double TakeProfit_320 = 3.20;
+ double TakeProfit_321 = 3.21;
+ double TakeProfit_322 = 3.22;
+ double TakeProfit_323 = 3.23;
+ double TakeProfit_324 = 3.24;
+ double TakeProfit_325 = 3.25;
+ double TakeProfit_326 = 3.26;
+ double TakeProfit_327 = 3.27;
+ double TakeProfit_328 = 3.28;
+ double TakeProfit_329 = 3.29;
+ double TakeProfit_330 = 3.30;
+ double TakeProfit_331 = 3.31;
+ double TakeProfit_332 = 3.32;
+ double TakeProfit_333 = 3.33;
+ double TakeProfit_334 = 3.34;
+ double TakeProfit_335 = 3.35;
+ double TakeProfit_336 = 3.36;
+ double TakeProfit_337 = 3.37;
+ double TakeProfit_338 = 3.38;
+ double TakeProfit_339 = 3.39;
+ double TakeProfit_340 = 3.40;
+ double TakeProfit_341 = 3.41;
+ double TakeProfit_342 = 3.42;
+ double TakeProfit_343 = 3.43;
+ double TakeProfit_344 = 3.44;
+ double TakeProfit_345 = 3.45;
+ double TakeProfit_346 = 3.46;
+ double TakeProfit_347 = 3.47;
+ double TakeProfit_348 = 3.48;
+ double TakeProfit_349 = 3.49;
+ double TakeProfit_350 = 3.50;
+ double TakeProfit_351 = 3.51;
+ double TakeProfit_352 = 3.52;
+ double TakeProfit_353 = 3.53;
+ double TakeProfit_354 = 3.54;
+ double TakeProfit_355 = 3.55;
+ double TakeProfit_356 = 3.56;
+ double TakeProfit_357 = 3.57;
+ double TakeProfit_358 = 3.58;
+ double TakeProfit_359 = 3.59;
+ double TakeProfit_360 = 3.60;
+ double TakeProfit_361 = 3.61;
+ double TakeProfit_362 = 3.62;
+ double TakeProfit_363 = 3.63;
+ double TakeProfit_364 = 3.64;
+ double TakeProfit_365 = 3.65;
+ double TakeProfit_366 = 3.66;
+ double TakeProfit_367 = 3.67;
+ double TakeProfit_368 = 3.68;
+ double TakeProfit_369 = 3.69;
+
+
+ double Step_2 = 65;
+ double Step_3 = 65;
+ double Step_4 = 65;
+ double Step_5 = 65;
+ double Step_6 = 65;
+ double Step_7 = 65;
+ double Step_8 = 65;
+ double Step_9 = 65;
+ double Step_10 = 65;
+ double Step_11 = 65;
+ double Step_12 = 65;
+ double Step_13 = 65;
+ double Step_14 = 65;
+ double Step_15 = 65;
+ double Step_16 = 65;
+ double Step_17 = 65;
+ double Step_18 = 65;
+ double Step_19 = 65;
+ double Step_20 = 65;
+ double Step_21 = 65;
+ double Step_22 = 65;
+ double Step_23 = 65;
+ double Step_24 = 65;
+ double Step_25 = 65;
+ double Step_26 = 65;
+ double Step_27 = 65;
+ double Step_28 = 65;
+ double Step_29 = 65;
+ double Step_30 = 65;
+ double Step_31 = 65;
+ double Step_32 = 65;
+ double Step_33 = 65;
+ double Step_34 = 65;
+ double Step_35 = 65;
+ double Step_36 = 65;
+ double Step_37 = 65;
+ double Step_38 = 65;
+ double Step_39 = 65;
+ double Step_40 = 65;
+ double Step_41 = 65;
+ double Step_42 = 65;
+ double Step_43 = 65;
+ double Step_44 = 65;
+ double Step_45 = 65;
+ double Step_46 = 65;
+ double Step_47 = 65;
+ double Step_48 = 65;
+ double Step_49 = 65;
+ double Step_50 = 65;
+ double Step_51 = 65;
+ double Step_52 = 65;
+ double Step_53 = 65;
+ double Step_54 = 65;
+ double Step_55 = 65;
+ double Step_56 = 65;
+ double Step_57 = 65;
+ double Step_58 = 65;
+ double Step_59 = 65;
+ double Step_60 = 65;
+ double Step_61 = 65;
+ double Step_62 = 65;
+ double Step_63 = 65;
+ double Step_64 = 65;
+ double Step_65 = 65;
+ double Step_66 = 65;
+ double Step_67 = 65;
+ double Step_68 = 65;
+ double Step_69 = 65;
+ double Step_70 = 65;
+ double Step_71 = 65;
+ double Step_72 = 65;
+ double Step_73 = 65;
+ double Step_74 = 65;
+ double Step_75 = 65;
+ double Step_76 = 65;
+ double Step_77 = 65;
+ double Step_78 = 65;
+ double Step_79 = 65;
+ double Step_80 = 65;
+ double Step_81 = 65;
+ double Step_82 = 65;
+ double Step_83 = 65;
+ double Step_84 = 65;
+ double Step_85 = 65;
+ double Step_86 = 65;
+ double Step_87 = 65;
+ double Step_88 = 65;
+ double Step_89 = 65;
+ double Step_90 = 65;
+ double Step_91 = 65;
+ double Step_92 = 65;
+ double Step_93 = 65;
+ double Step_94 = 65;
+ double Step_95 = 65;
+ double Step_96 = 65;
+ double Step_97 = 65;
+ double Step_98 = 65;
+ double Step_99 = 65;
+ double Step_100 = 65;
+ double Step_101 = 65;
+ double Step_102 = 65;
+ double Step_103 = 65;
+ double Step_104 = 65;
+ double Step_105 = 65;
+ double Step_106 = 65;
+ double Step_107 = 65;
+ double Step_108 = 65;
+ double Step_109 = 65;
+ double Step_110 = 65;
+ double Step_111 = 65;
+ double Step_112 = 65;
+ double Step_113 = 65;
+ double Step_114 = 65;
+ double Step_115 = 65;
+ double Step_116 = 65;
+ double Step_117 = 65;
+ double Step_118 = 65;
+ double Step_119 = 65;
+ double Step_120 = 65;
+ double Step_121 = 65;
+ double Step_122 = 65;
+ double Step_123 = 65;
+ double Step_124 = 65;
+ double Step_125 = 65;
+ double Step_126 = 65;
+ double Step_127 = 65;
+ double Step_128 = 65;
+ double Step_129 = 65;
+ double Step_130 = 65;
+ double Step_131 = 65;
+ double Step_132 = 65;
+ double Step_133 = 65;
+ double Step_134 = 65;
+ double Step_135 = 65;
+ double Step_136 = 65;
+ double Step_137 = 65;
+ double Step_138 = 65;
+ double Step_139 = 65;
+ double Step_140 = 65;
+ double Step_141 = 65;
+ double Step_142 = 65;
+ double Step_143 = 65;
+ double Step_144 = 65;
+ double Step_145 = 65;
+ double Step_146 = 65;
+ double Step_147 = 65;
+ double Step_148 = 65;
+ double Step_149 = 65;
+ double Step_150 = 65;
+ double Step_151 = 65;
+ double Step_152 = 65;
+ double Step_153 = 65;
+ double Step_154 = 65;
+ double Step_155 = 65;
+ double Step_156 = 65;
+ double Step_157 = 65;
+ double Step_158 = 65;
+ double Step_159 = 65;
+ double Step_160 = 65;
+ double Step_161 = 65;
+ double Step_162 = 65;
+ double Step_163 = 65;
+ double Step_164 = 65;
+ double Step_165 = 65;
+ double Step_166 = 65;
+ double Step_167 = 65;
+ double Step_168 = 65;
+ double Step_169 = 65;
+ double Step_170 = 65;
+ double Step_171 = 65;
+ double Step_172 = 65;
+ double Step_173 = 65;
+ double Step_174 = 65;
+ double Step_175 = 65;
+ double Step_176 = 65;
+ double Step_177 = 65;
+ double Step_178 = 65;
+ double Step_179 = 65;
+ double Step_180 = 65;
+ double Step_181 = 65;
+ double Step_182 = 65;
+ double Step_183 = 65;
+ double Step_184 = 65;
+ double Step_185 = 65;
+ double Step_186 = 65;
+ double Step_187 = 65;
+ double Step_188 = 65;
+ double Step_189 = 65;
+ double Step_190 = 65;
+ double Step_191 = 65;
+ double Step_192 = 65;
+ double Step_193 = 65;
+ double Step_194 = 65;
+ double Step_195 = 65;
+ double Step_196 = 65;
+ double Step_197 = 65;
+ double Step_198 = 65;
+ double Step_199 = 65;
+ double Step_200 = 65;
+ double Step_201 = 65;
+ double Step_202 = 65;
+ double Step_203 = 65;
+ double Step_204 = 65;
+ double Step_205 = 65;
+ double Step_206 = 65;
+ double Step_207 = 65;
+ double Step_208 = 65;
+ double Step_209 = 65;
+ double Step_210 = 65;
+ double Step_211 = 65;
+ double Step_212 = 65;
+ double Step_213 = 65;
+ double Step_214 = 65;
+ double Step_215 = 65;
+ double Step_216 = 65;
+ double Step_217 = 65;
+ double Step_218 = 65;
+ double Step_219 = 65;
+ double Step_220 = 65;
+ double Step_221 = 65;
+ double Step_222 = 65;
+ double Step_223 = 65;
+ double Step_224 = 65;
+ double Step_225 = 65;
+ double Step_226 = 65;
+ double Step_227 = 65;
+ double Step_228 = 65;
+ double Step_229 = 65;
+ double Step_230 = 65;
+ double Step_231 = 65;
+ double Step_232 = 65;
+ double Step_233 = 65;
+ double Step_234 = 65;
+ double Step_235 = 65;
+ double Step_236 = 65;
+ double Step_237 = 65;
+ double Step_238 = 65;
+ double Step_239 = 65;
+ double Step_240 = 65;
+ double Step_241 = 65;
+ double Step_242 = 65;
+ double Step_243 = 65;
+ double Step_244 = 65;
+ double Step_245 = 65;
+ double Step_246 = 65;
+ double Step_247 = 65;
+ double Step_248 = 65;
+ double Step_249 = 65;
+ double Step_250 = 65;
+ double Step_251 = 65;
+ double Step_252 = 65;
+ double Step_253 = 65;
+ double Step_254 = 65;
+ double Step_255 = 65;
+ double Step_256 = 65;
+ double Step_257 = 65;
+ double Step_258 = 65;
+ double Step_259 = 65;
+ double Step_260 = 65;
+ double Step_261 = 65;
+ double Step_262 = 65;
+ double Step_263 = 65;
+ double Step_264 = 65;
+ double Step_265 = 65;
+ double Step_266 = 65;
+ double Step_267 = 65;
+ double Step_268 = 65;
+ double Step_269 = 65;
+ double Step_270 = 65;
+ double Step_271 = 65;
+ double Step_272 = 65;
+ double Step_273 = 65;
+ double Step_274 = 65;
+ double Step_275 = 65;
+ double Step_276 = 65;
+ double Step_277 = 65;
+ double Step_278 = 65;
+ double Step_279 = 65;
+ double Step_280 = 65;
+ double Step_281 = 65;
+ double Step_282 = 65;
+ double Step_283 = 65;
+ double Step_284 = 65;
+ double Step_285 = 65;
+ double Step_286 = 65;
+ double Step_287 = 65;
+ double Step_288 = 65;
+ double Step_289 = 65;
+ double Step_290 = 65;
+ double Step_291 = 65;
+ double Step_292 = 65;
+ double Step_293 = 65;
+ double Step_294 = 65;
+ double Step_295 = 65;
+ double Step_296 = 65;
+ double Step_297 = 65;
+ double Step_298 = 65;
+ double Step_299 = 65;
+ double Step_300 = 65;
+ double Step_301 = 65;
+ double Step_302 = 65;
+ double Step_303 = 65;
+ double Step_304 = 65;
+ double Step_305 = 65;
+ double Step_306 = 65;
+ double Step_307 = 65;
+ double Step_308 = 65;
+ double Step_309 = 65;
+ double Step_310 = 65;
+ double Step_311 = 65;
+ double Step_312 = 65;
+ double Step_313 = 65;
+ double Step_314 = 65;
+ double Step_315 = 65;
+ double Step_316 = 65;
+ double Step_317 = 65;
+ double Step_318 = 65;
+ double Step_319 = 65;
+ double Step_320 = 65;
+ double Step_321 = 65;
+ double Step_322 = 65;
+ double Step_323 = 65;
+ double Step_324 = 65;
+ double Step_325 = 65;
+ double Step_326 = 65;
+ double Step_327 = 65;
+ double Step_328 = 65;
+ double Step_329 = 65;
+ double Step_330 = 65;
+ double Step_331 = 65;
+ double Step_332 = 65;
+ double Step_333 = 65;
+ double Step_334 = 65;
+ double Step_335 = 65;
+ double Step_336 = 65;
+ double Step_337 = 65;
+ double Step_338 = 65;
+ double Step_339 = 65;
+ double Step_340 = 65;
+ double Step_341 = 65;
+ double Step_342 = 65;
+ double Step_343 = 65;
+ double Step_344 = 65;
+ double Step_345 = 65;
+ double Step_346 = 65;
+ double Step_347 = 65;
+ double Step_348 = 65;
+ double Step_349 = 65;
+ double Step_350 = 65;
+ double Step_351 = 65;
+ double Step_352 = 65;
+ double Step_353 = 65;
+ double Step_354 = 65;
+ double Step_355 = 65;
+ double Step_356 = 65;
+ double Step_357 = 65;
+ double Step_358 = 65;
+ double Step_359 = 65;
+ double Step_360 = 65;
+ double Step_361 = 65;
+ double Step_362 = 65;
+ double Step_363 = 65;
+ double Step_364 = 65;
+ double Step_365 = 65;
+ double Step_366 = 65;
+ double Step_367 = 65;
+ double Step_368 = 65;
+ double Step_369 = 65;
+
+
+
+
+ string inpLot = "";// Lot Size
+ string inpPipSteps = ""; // Distance (Only For Pending Orders)
+ string inpTakeProfit = ""; // TakeProfit
+
+bool FirstTime = false;
+ int MaxTrade = 369;
+ int PosX = 0;
+ int PosY = 20;
+ extern bool AddSpreadCommission = true;
+extern int Magic_Number = 1001;
+
+ string S1 = "||================ Profit Close Positions Control ================||";
+
+ double Pro_EqPer = 0; // Equity %
+ double Pro_BalPer = 0; // Balance %
+extern double Pro_Amounts = 1.7; // Amount
+ string S2 = "||================ Loss Close Positions Control ================||";
+
+ double Los_EqPer = 0; // Equity %
+ double Los_BalPer = 0; // Balance %
+ double Los_Amounts = 0; // Amount
+
+double DigitPoints;
+int MultiplierPoint;
+double StopLevel;
+
+string _symlot[100];
+string _sympip[100];
+string _symtp[100];
+
+
+int totallot=0;
+int totalpipsteps =0;
+int totaltp =0;
+
+datetime StartTime;
+
+int LastOrder;
+
+
+  bool CheckExpiry = FALSE; 
+  bool CheckAccountLock = FALSE;
+  
+  
+datetime expiryDate=D'2022.04.30 00:00';
+ int account = 300296193;
+
+double LossCounter =0;
+int Counter =0;
+double Multiplier=1;
+
+double gapper = 0;
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+  {
+//---
+
+   inpLot = Lots_OP_1+","+Lots_OP_2+","+Lots_OP_3+","+Lots_OP_4+","+Lots_OP_5+","+Lots_OP_6+","+Lots_OP_7+","+Lots_OP_8+","+Lots_OP_9+","+Lots_OP_10+","+Lots_OP_11+","+Lots_OP_12+","+Lots_OP_13+","+Lots_OP_14+","+Lots_OP_15+","+Lots_OP_16+","+Lots_OP_17+","+Lots_OP_18+","+Lots_OP_19+","+Lots_OP_20+","+Lots_OP_21+","+Lots_OP_22+","+Lots_OP_23+","+Lots_OP_24+","+Lots_OP_25+","+Lots_OP_26+","+Lots_OP_27+","+Lots_OP_28+","+Lots_OP_29+","+Lots_OP_30+","+Lots_OP_31+","+Lots_OP_32+","+Lots_OP_33+","+Lots_OP_34+","+Lots_OP_35+","+Lots_OP_36+","+Lots_OP_37+","+Lots_OP_38+","+Lots_OP_39+","+Lots_OP_40+","+Lots_OP_41+","+Lots_OP_42+","+Lots_OP_43+","+Lots_OP_44+","+Lots_OP_45+","+Lots_OP_46+","+Lots_OP_47+","+Lots_OP_48+","+Lots_OP_49+","+Lots_OP_50+","+Lots_OP_51+","+Lots_OP_52+","+Lots_OP_53+","+Lots_OP_54+","+Lots_OP_55+","+Lots_OP_56+","+Lots_OP_57+","+Lots_OP_58+","+Lots_OP_59+","+Lots_OP_60+","+Lots_OP_61+","+Lots_OP_62+","+Lots_OP_63+","+Lots_OP_64+","+Lots_OP_65+","+Lots_OP_66+","+Lots_OP_67+","+Lots_OP_68+","+Lots_OP_69+","+Lots_OP_70+","+Lots_OP_71+","+Lots_OP_72+","+Lots_OP_73+","+Lots_OP_74+","+Lots_OP_75+","+Lots_OP_76+","+Lots_OP_77+","+Lots_OP_78+","+Lots_OP_79+","+Lots_OP_80+","+Lots_OP_81+","+Lots_OP_82+","+Lots_OP_83+","+Lots_OP_84+","+Lots_OP_85+","+Lots_OP_86+","+Lots_OP_87+","+Lots_OP_88+","+Lots_OP_89+","+Lots_OP_90+","+Lots_OP_91+","+Lots_OP_92+","+Lots_OP_93+","+Lots_OP_94+","+Lots_OP_95+","+Lots_OP_96+","+Lots_OP_97+","+Lots_OP_98+","+Lots_OP_99+","+Lots_OP_100+","+Lots_OP_101+","+Lots_OP_102+","+Lots_OP_103+","+Lots_OP_104+","+Lots_OP_105+","+Lots_OP_106+","+Lots_OP_107+","+Lots_OP_108+","+Lots_OP_109+","+Lots_OP_110+","+Lots_OP_111+","+Lots_OP_112+","+Lots_OP_113+","+Lots_OP_114+","+Lots_OP_115+","+Lots_OP_116+","+Lots_OP_117+","+Lots_OP_118+","+Lots_OP_119+","+Lots_OP_120+","+Lots_OP_121+","+Lots_OP_122+","+Lots_OP_123+","+Lots_OP_124+","+Lots_OP_125+","+Lots_OP_126+","+Lots_OP_127+","+Lots_OP_128+","+Lots_OP_129+","+Lots_OP_130+","+Lots_OP_131+","+Lots_OP_132+","+Lots_OP_133+","+Lots_OP_134+","+Lots_OP_135+","+Lots_OP_136+","+Lots_OP_137+","+Lots_OP_138+","+Lots_OP_139+","+Lots_OP_140+","+Lots_OP_141+","+Lots_OP_142+","+Lots_OP_143+","+Lots_OP_144+","+Lots_OP_145+","+Lots_OP_146+","+Lots_OP_147+","+Lots_OP_148+","+Lots_OP_149+","+Lots_OP_150+","+Lots_OP_151+","+Lots_OP_152+","+Lots_OP_153+","+Lots_OP_154+","+Lots_OP_155+","+Lots_OP_156+","+Lots_OP_157+","+Lots_OP_158+","+Lots_OP_159+","+Lots_OP_160+","+Lots_OP_161+","+Lots_OP_162+","+Lots_OP_163+","+Lots_OP_164+","+Lots_OP_165+","+Lots_OP_166+","+Lots_OP_167+","+Lots_OP_168+","+Lots_OP_169+","+Lots_OP_170+","+Lots_OP_171+","+Lots_OP_172+","+Lots_OP_173+","+Lots_OP_174+","+Lots_OP_175+","+Lots_OP_176+","+Lots_OP_177+","+Lots_OP_178+","+Lots_OP_179+","+Lots_OP_180+","+Lots_OP_181+","+Lots_OP_182+","+Lots_OP_183+","+Lots_OP_184+","+Lots_OP_185+","+Lots_OP_186+","+Lots_OP_187+","+Lots_OP_188+","+Lots_OP_189+","+Lots_OP_190+","+Lots_OP_191+","+Lots_OP_192+","+Lots_OP_193+","+Lots_OP_194+","+Lots_OP_195+","+Lots_OP_196+","+Lots_OP_197+","+Lots_OP_198+","+Lots_OP_199+","+Lots_OP_200+","+Lots_OP_201+","+Lots_OP_202+","+Lots_OP_203+","+Lots_OP_204+","+Lots_OP_205+","+Lots_OP_206+","+Lots_OP_207+","+Lots_OP_208+","+Lots_OP_209+","+Lots_OP_210+","+Lots_OP_211+","+Lots_OP_212+","+Lots_OP_213+","+Lots_OP_214+","+Lots_OP_215+","+Lots_OP_216+","+Lots_OP_217+","+Lots_OP_218+","+Lots_OP_219+","+Lots_OP_220+","+Lots_OP_221+","+Lots_OP_222+","+Lots_OP_223+","+Lots_OP_224+","+Lots_OP_225+","+Lots_OP_226+","+Lots_OP_227+","+Lots_OP_228+","+Lots_OP_229+","+Lots_OP_230+","+Lots_OP_231+","+Lots_OP_232+","+Lots_OP_233+","+Lots_OP_234+","+Lots_OP_235+","+Lots_OP_236+","+Lots_OP_237+","+Lots_OP_238+","+Lots_OP_239+","+Lots_OP_240+","+Lots_OP_241+","+Lots_OP_242+","+Lots_OP_243+","+Lots_OP_244+","+Lots_OP_245+","+Lots_OP_246+","+Lots_OP_247+","+Lots_OP_248+","+Lots_OP_249+","+Lots_OP_250+","+Lots_OP_251+","+Lots_OP_252+","+Lots_OP_253+","+Lots_OP_254+","+Lots_OP_255+","+Lots_OP_256+","+Lots_OP_257+","+Lots_OP_258+","+Lots_OP_259+","+Lots_OP_260+","+Lots_OP_261+","+Lots_OP_262+","+Lots_OP_263+","+Lots_OP_264+","+Lots_OP_265+","+Lots_OP_266+","+Lots_OP_267+","+Lots_OP_268+","+Lots_OP_269+","+Lots_OP_270+","+Lots_OP_271+","+Lots_OP_272+","+Lots_OP_273+","+Lots_OP_274+","+Lots_OP_275+","+Lots_OP_276+","+Lots_OP_277+","+Lots_OP_278+","+Lots_OP_279+","+Lots_OP_280+","+Lots_OP_281+","+Lots_OP_282+","+Lots_OP_283+","+Lots_OP_284+","+Lots_OP_285+","+Lots_OP_286+","+Lots_OP_287+","+Lots_OP_288+","+Lots_OP_289+","+Lots_OP_290+","+Lots_OP_291+","+Lots_OP_292+","+Lots_OP_293+","+Lots_OP_294+","+Lots_OP_295+","+Lots_OP_296+","+Lots_OP_297+","+Lots_OP_298+","+Lots_OP_299+","+Lots_OP_300+","+Lots_OP_301+","+Lots_OP_302+","+Lots_OP_303+","+Lots_OP_304+","+Lots_OP_305+","+Lots_OP_306+","+Lots_OP_307+","+Lots_OP_308+","+Lots_OP_309+","+Lots_OP_310+","+Lots_OP_311+","+Lots_OP_312+","+Lots_OP_313+","+Lots_OP_314+","+Lots_OP_315+","+Lots_OP_316+","+Lots_OP_317+","+Lots_OP_318+","+Lots_OP_319+","+Lots_OP_320+","+Lots_OP_321+","+Lots_OP_322+","+Lots_OP_323+","+Lots_OP_324+","+Lots_OP_325+","+Lots_OP_326+","+Lots_OP_327+","+Lots_OP_328+","+Lots_OP_329+","+Lots_OP_330+","+Lots_OP_331+","+Lots_OP_332+","+Lots_OP_333+","+Lots_OP_334+","+Lots_OP_335+","+Lots_OP_336+","+Lots_OP_337+","+Lots_OP_338+","+Lots_OP_339+","+Lots_OP_340+","+Lots_OP_341+","+Lots_OP_342+","+Lots_OP_343+","+Lots_OP_344+","+Lots_OP_345+","+Lots_OP_346+","+Lots_OP_347+","+Lots_OP_348+","+Lots_OP_349+","+Lots_OP_350+","+Lots_OP_351+","+Lots_OP_352+","+Lots_OP_353+","+Lots_OP_354+","+Lots_OP_355+","+Lots_OP_356+","+Lots_OP_357+","+Lots_OP_358+","+Lots_OP_359+","+Lots_OP_360+","+Lots_OP_361+","+Lots_OP_362+","+Lots_OP_363+","+Lots_OP_364+","+Lots_OP_365+","+Lots_OP_366+","+Lots_OP_367+","+Lots_OP_368+","+Lots_OP_369;
+   inpPipSteps = Step_2+","+Step_3+","+Step_4+","+Step_5+","+Step_6+","+Step_7+","+Step_8+","+Step_9+","+Step_10+","+Step_11+","+Step_12+","+Step_13+","+Step_14+","+Step_15+","+Step_16+","+Step_17+","+Step_18+","+Step_19+","+Step_20+","+Step_21+","+Step_22+","+Step_23+","+Step_24+","+Step_25+","+Step_26+","+Step_27+","+Step_28+","+Step_29+","+Step_30+","+Step_31+","+Step_32+","+Step_33+","+Step_34+","+Step_35+","+Step_36+","+Step_37+","+Step_38+","+Step_39+","+Step_40+","+Step_41+","+Step_42+","+Step_43+","+Step_44+","+Step_45+","+Step_46+","+Step_47+","+Step_48+","+Step_49+","+Step_50+","+Step_51+","+Step_52+","+Step_53+","+Step_54+","+Step_55+","+Step_56+","+Step_57+","+Step_58+","+Step_59+","+Step_60+","+Step_61+","+Step_62+","+Step_63+","+Step_64+","+Step_65+","+Step_66+","+Step_67+","+Step_68+","+Step_69+","+Step_70+","+Step_71+","+Step_72+","+Step_73+","+Step_74+","+Step_75+","+Step_76+","+Step_77+","+Step_78+","+Step_79+","+Step_80+","+Step_81+","+Step_82+","+Step_83+","+Step_84+","+Step_85+","+Step_86+","+Step_87+","+Step_88+","+Step_89+","+Step_90+","+Step_91+","+Step_92+","+Step_93+","+Step_94+","+Step_95+","+Step_96+","+Step_97+","+Step_98+","+Step_99+","+Step_100+","+Step_101+","+Step_102+","+Step_103+","+Step_104+","+Step_105+","+Step_106+","+Step_107+","+Step_108+","+Step_109+","+Step_110+","+Step_111+","+Step_112+","+Step_113+","+Step_114+","+Step_115+","+Step_116+","+Step_117+","+Step_118+","+Step_119+","+Step_120+","+Step_121+","+Step_122+","+Step_123+","+Step_124+","+Step_125+","+Step_126+","+Step_127+","+Step_128+","+Step_129+","+Step_130+","+Step_131+","+Step_132+","+Step_133+","+Step_134+","+Step_135+","+Step_136+","+Step_137+","+Step_138+","+Step_139+","+Step_140+","+Step_141+","+Step_142+","+Step_143+","+Step_144+","+Step_145+","+Step_146+","+Step_147+","+Step_148+","+Step_149+","+Step_150+","+Step_151+","+Step_152+","+Step_153+","+Step_154+","+Step_155+","+Step_156+","+Step_157+","+Step_158+","+Step_159+","+Step_160+","+Step_161+","+Step_162+","+Step_163+","+Step_164+","+Step_165+","+Step_166+","+Step_167+","+Step_168+","+Step_169+","+Step_170+","+Step_171+","+Step_172+","+Step_173+","+Step_174+","+Step_175+","+Step_176+","+Step_177+","+Step_178+","+Step_179+","+Step_180+","+Step_181+","+Step_182+","+Step_183+","+Step_184+","+Step_185+","+Step_186+","+Step_187+","+Step_188+","+Step_189+","+Step_190+","+Step_191+","+Step_192+","+Step_193+","+Step_194+","+Step_195+","+Step_196+","+Step_197+","+Step_198+","+Step_199+","+Step_200+","+Step_201+","+Step_202+","+Step_203+","+Step_204+","+Step_205+","+Step_206+","+Step_207+","+Step_208+","+Step_209+","+Step_210+","+Step_211+","+Step_212+","+Step_213+","+Step_214+","+Step_215+","+Step_216+","+Step_217+","+Step_218+","+Step_219+","+Step_220+","+Step_221+","+Step_222+","+Step_223+","+Step_224+","+Step_225+","+Step_226+","+Step_227+","+Step_228+","+Step_229+","+Step_230+","+Step_231+","+Step_232+","+Step_233+","+Step_234+","+Step_235+","+Step_236+","+Step_237+","+Step_238+","+Step_239+","+Step_240+","+Step_241+","+Step_242+","+Step_243+","+Step_244+","+Step_245+","+Step_246+","+Step_247+","+Step_248+","+Step_249+","+Step_250+","+Step_251+","+Step_252+","+Step_253+","+Step_254+","+Step_255+","+Step_256+","+Step_257+","+Step_258+","+Step_259+","+Step_260+","+Step_261+","+Step_262+","+Step_263+","+Step_264+","+Step_265+","+Step_266+","+Step_267+","+Step_268+","+Step_269+","+Step_270+","+Step_271+","+Step_272+","+Step_273+","+Step_274+","+Step_275+","+Step_276+","+Step_277+","+Step_278+","+Step_279+","+Step_280+","+Step_281+","+Step_282+","+Step_283+","+Step_284+","+Step_285+","+Step_286+","+Step_287+","+Step_288+","+Step_289+","+Step_290+","+Step_291+","+Step_292+","+Step_293+","+Step_294+","+Step_295+","+Step_296+","+Step_297+","+Step_298+","+Step_299+","+Step_300+","+Step_301+","+Step_302+","+Step_303+","+Step_304+","+Step_305+","+Step_306+","+Step_307+","+Step_308+","+Step_309+","+Step_310+","+Step_311+","+Step_312+","+Step_313+","+Step_314+","+Step_315+","+Step_316+","+Step_317+","+Step_318+","+Step_319+","+Step_320+","+Step_321+","+Step_322+","+Step_323+","+Step_324+","+Step_325+","+Step_326+","+Step_327+","+Step_328+","+Step_329+","+Step_330+","+Step_331+","+Step_332+","+Step_333+","+Step_334+","+Step_335+","+Step_336+","+Step_337+","+Step_338+","+Step_339+","+Step_340+","+Step_341+","+Step_342+","+Step_343+","+Step_344+","+Step_345+","+Step_346+","+Step_347+","+Step_348+","+Step_349+","+Step_350+","+Step_351+","+Step_352+","+Step_353+","+Step_354+","+Step_355+","+Step_356+","+Step_357+","+Step_358+","+Step_359+","+Step_360+","+Step_361+","+Step_362+","+Step_363+","+Step_364+","+Step_365+","+Step_366+","+Step_367+","+Step_368+","+Step_369;
+   inpTakeProfit = TakeProfit_1+","+TakeProfit_2+","+TakeProfit_3+","+TakeProfit_4+","+TakeProfit_5+","+TakeProfit_6+","+TakeProfit_7+","+TakeProfit_8+","+TakeProfit_9+","+TakeProfit_10+","+TakeProfit_11+","+TakeProfit_12+","+TakeProfit_13+","+TakeProfit_14+","+TakeProfit_15+","+TakeProfit_16+","+TakeProfit_17+","+TakeProfit_18+","+TakeProfit_19+","+TakeProfit_20+","+TakeProfit_21+","+TakeProfit_22+","+TakeProfit_23+","+TakeProfit_24+","+TakeProfit_25+","+TakeProfit_26+","+TakeProfit_27+","+TakeProfit_28+","+TakeProfit_29+","+TakeProfit_30+","+TakeProfit_31+","+TakeProfit_32+","+TakeProfit_33+","+TakeProfit_34+","+TakeProfit_35+","+TakeProfit_36+","+TakeProfit_37+","+TakeProfit_38+","+TakeProfit_39+","+TakeProfit_40+","+TakeProfit_41+","+TakeProfit_42+","+TakeProfit_43+","+TakeProfit_44+","+TakeProfit_45+","+TakeProfit_46+","+TakeProfit_47+","+TakeProfit_48+","+TakeProfit_49+","+TakeProfit_50+","+TakeProfit_51+","+TakeProfit_52+","+TakeProfit_53+","+TakeProfit_54+","+TakeProfit_55+","+TakeProfit_56+","+TakeProfit_57+","+TakeProfit_58+","+TakeProfit_59+","+TakeProfit_60+","+TakeProfit_61+","+TakeProfit_62+","+TakeProfit_63+","+TakeProfit_64+","+TakeProfit_65+","+TakeProfit_66+","+TakeProfit_67+","+TakeProfit_68+","+TakeProfit_69+","+TakeProfit_70+","+TakeProfit_71+","+TakeProfit_72+","+TakeProfit_73+","+TakeProfit_74+","+TakeProfit_75+","+TakeProfit_76+","+TakeProfit_77+","+TakeProfit_78+","+TakeProfit_79+","+TakeProfit_80+","+TakeProfit_81+","+TakeProfit_82+","+TakeProfit_83+","+TakeProfit_84+","+TakeProfit_85+","+TakeProfit_86+","+TakeProfit_87+","+TakeProfit_88+","+TakeProfit_89+","+TakeProfit_90+","+TakeProfit_91+","+TakeProfit_92+","+TakeProfit_93+","+TakeProfit_94+","+TakeProfit_95+","+TakeProfit_96+","+TakeProfit_97+","+TakeProfit_98+","+TakeProfit_99+","+TakeProfit_100+","+TakeProfit_101+","+TakeProfit_102+","+TakeProfit_103+","+TakeProfit_104+","+TakeProfit_105+","+TakeProfit_106+","+TakeProfit_107+","+TakeProfit_108+","+TakeProfit_109+","+TakeProfit_110+","+TakeProfit_111+","+TakeProfit_112+","+TakeProfit_113+","+TakeProfit_114+","+TakeProfit_115+","+TakeProfit_116+","+TakeProfit_117+","+TakeProfit_118+","+TakeProfit_119+","+TakeProfit_120+","+TakeProfit_121+","+TakeProfit_122+","+TakeProfit_123+","+TakeProfit_124+","+TakeProfit_125+","+TakeProfit_126+","+TakeProfit_127+","+TakeProfit_128+","+TakeProfit_129+","+TakeProfit_130+","+TakeProfit_131+","+TakeProfit_132+","+TakeProfit_133+","+TakeProfit_134+","+TakeProfit_135+","+TakeProfit_136+","+TakeProfit_137+","+TakeProfit_138+","+TakeProfit_139+","+TakeProfit_140+","+TakeProfit_141+","+TakeProfit_142+","+TakeProfit_143+","+TakeProfit_144+","+TakeProfit_145+","+TakeProfit_146+","+TakeProfit_147+","+TakeProfit_148+","+TakeProfit_149+","+TakeProfit_150+","+TakeProfit_151+","+TakeProfit_152+","+TakeProfit_153+","+TakeProfit_154+","+TakeProfit_155+","+TakeProfit_156+","+TakeProfit_157+","+TakeProfit_158+","+TakeProfit_159+","+TakeProfit_160+","+TakeProfit_161+","+TakeProfit_162+","+TakeProfit_163+","+TakeProfit_164+","+TakeProfit_165+","+TakeProfit_166+","+TakeProfit_167+","+TakeProfit_168+","+TakeProfit_169+","+TakeProfit_170+","+TakeProfit_171+","+TakeProfit_172+","+TakeProfit_173+","+TakeProfit_174+","+TakeProfit_175+","+TakeProfit_176+","+TakeProfit_177+","+TakeProfit_178+","+TakeProfit_179+","+TakeProfit_180+","+TakeProfit_181+","+TakeProfit_182+","+TakeProfit_183+","+TakeProfit_184+","+TakeProfit_185+","+TakeProfit_186+","+TakeProfit_187+","+TakeProfit_188+","+TakeProfit_189+","+TakeProfit_190+","+TakeProfit_191+","+TakeProfit_192+","+TakeProfit_193+","+TakeProfit_194+","+TakeProfit_195+","+TakeProfit_196+","+TakeProfit_197+","+TakeProfit_198+","+TakeProfit_199+","+TakeProfit_200+","+TakeProfit_201+","+TakeProfit_202+","+TakeProfit_203+","+TakeProfit_204+","+TakeProfit_205+","+TakeProfit_206+","+TakeProfit_207+","+TakeProfit_208+","+TakeProfit_209+","+TakeProfit_210+","+TakeProfit_211+","+TakeProfit_212+","+TakeProfit_213+","+TakeProfit_214+","+TakeProfit_215+","+TakeProfit_216+","+TakeProfit_217+","+TakeProfit_218+","+TakeProfit_219+","+TakeProfit_220+","+TakeProfit_221+","+TakeProfit_222+","+TakeProfit_223+","+TakeProfit_224+","+TakeProfit_225+","+TakeProfit_226+","+TakeProfit_227+","+TakeProfit_228+","+TakeProfit_229+","+TakeProfit_230+","+TakeProfit_231+","+TakeProfit_232+","+TakeProfit_233+","+TakeProfit_234+","+TakeProfit_235+","+TakeProfit_236+","+TakeProfit_237+","+TakeProfit_238+","+TakeProfit_239+","+TakeProfit_240+","+TakeProfit_241+","+TakeProfit_242+","+TakeProfit_243+","+TakeProfit_244+","+TakeProfit_245+","+TakeProfit_246+","+TakeProfit_247+","+TakeProfit_248+","+TakeProfit_249+","+TakeProfit_250+","+TakeProfit_251+","+TakeProfit_252+","+TakeProfit_253+","+TakeProfit_254+","+TakeProfit_255+","+TakeProfit_256+","+TakeProfit_257+","+TakeProfit_258+","+TakeProfit_259+","+TakeProfit_260+","+TakeProfit_261+","+TakeProfit_262+","+TakeProfit_263+","+TakeProfit_264+","+TakeProfit_265+","+TakeProfit_266+","+TakeProfit_267+","+TakeProfit_268+","+TakeProfit_269+","+TakeProfit_270+","+TakeProfit_271+","+TakeProfit_272+","+TakeProfit_273+","+TakeProfit_274+","+TakeProfit_275+","+TakeProfit_276+","+TakeProfit_277+","+TakeProfit_278+","+TakeProfit_279+","+TakeProfit_280+","+TakeProfit_281+","+TakeProfit_282+","+TakeProfit_283+","+TakeProfit_284+","+TakeProfit_285+","+TakeProfit_286+","+TakeProfit_287+","+TakeProfit_288+","+TakeProfit_289+","+TakeProfit_290+","+TakeProfit_291+","+TakeProfit_292+","+TakeProfit_293+","+TakeProfit_294+","+TakeProfit_295+","+TakeProfit_296+","+TakeProfit_297+","+TakeProfit_298+","+TakeProfit_299+","+TakeProfit_300+","+TakeProfit_301+","+TakeProfit_302+","+TakeProfit_303+","+TakeProfit_304+","+TakeProfit_305+","+TakeProfit_306+","+TakeProfit_307+","+TakeProfit_308+","+TakeProfit_309+","+TakeProfit_310+","+TakeProfit_311+","+TakeProfit_312+","+TakeProfit_313+","+TakeProfit_314+","+TakeProfit_315+","+TakeProfit_316+","+TakeProfit_317+","+TakeProfit_318+","+TakeProfit_319+","+TakeProfit_320+","+TakeProfit_321+","+TakeProfit_322+","+TakeProfit_323+","+TakeProfit_324+","+TakeProfit_325+","+TakeProfit_326+","+TakeProfit_327+","+TakeProfit_328+","+TakeProfit_329+","+TakeProfit_330+","+TakeProfit_331+","+TakeProfit_332+","+TakeProfit_333+","+TakeProfit_334+","+TakeProfit_335+","+TakeProfit_336+","+TakeProfit_337+","+TakeProfit_338+","+TakeProfit_339+","+TakeProfit_340+","+TakeProfit_341+","+TakeProfit_342+","+TakeProfit_343+","+TakeProfit_344+","+TakeProfit_345+","+TakeProfit_346+","+TakeProfit_347+","+TakeProfit_348+","+TakeProfit_349+","+TakeProfit_350+","+TakeProfit_351+","+TakeProfit_352+","+TakeProfit_353+","+TakeProfit_354+","+TakeProfit_355+","+TakeProfit_356+","+TakeProfit_357+","+TakeProfit_358+","+TakeProfit_359+","+TakeProfit_360+","+TakeProfit_361+","+TakeProfit_362+","+TakeProfit_363+","+TakeProfit_364+","+TakeProfit_365+","+TakeProfit_366+","+TakeProfit_367+","+TakeProfit_368+","+TakeProfit_369;
+
+   
+   int x=350;
+
+   
+
+  
+         DeleteButton();
+         CreateButton("."," ",PosX,PosY,300,400,clrWhite,clrGray,clrGray,9);
+         CreateButton("TIME","Terminal time: 00:00:00",PosX,PosY,300,35,clrWhite,clrBlue,clrBlue,9);
+         CreateButton("ACCOUNTNAME","ACCOUNT NAME",PosX+10,PosY+40,120,35,clrBlack,clrWhite,clrWhite,8);
+         CreateButton("ACCOUNTNAMEVALUE",AccountName(),PosX+125,PosY+40,160,35,clrBlack,clrWhite,clrWhite,8);
+         CreateButton("ACCOUNTNUMBER","ACCOUNT NUMBER",PosX+10,PosY+80,120,35,clrBlack,clrWhite,clrWhite,8);
+         CreateButton("ACCOUNTNUMBERVALUE",IntegerToString(AccountNumber()),PosX+125,PosY+80,160,35,clrBlack,clrWhite,clrWhite,8);
+         CreateButton("BALANCE","BALANCE",PosX+10,PosY+120,120,35,clrBlack,clrWhite,clrWhite,8);
+         CreateButton("BALANCEVALUE","0.00",PosX+125,PosY+120,160,35,clrBlack,clrWhite,clrWhite,8);
+         CreateButton("EQUITY","EQUITY",PosX+10,PosY+160,120,35,clrBlack,clrWhite,clrWhite,8);
+         CreateButton("EQUITYVALUE","0.00",PosX+125,PosY+160,160,35,clrBlack,clrWhite,clrWhite,8);
+         CreateButton("PROFITCLOSE","PROFIT CLOSED",PosX+10,PosY+200,120,35,clrWhite,clrGreen,clrGreen,8);
+         CreateButton("PROFITCLOSEDVALUE","0.00",PosX+125,PosY+200,160,35,clrGreen,clrWhite,clrGreen,8);
+         CreateButton("PROFIT","PROFIT",PosX+10,PosY+240,120,35,clrWhite,clrGreen,clrGreen,8);
+         CreateButton("PROFITVALUE","0.00",PosX+125,PosY+240,160,35,clrGreen,clrWhite,clrGreen,8);
+         CreateButton("BUY","BUY (0)",PosX+10,PosY+280,120,35,clrBlack,clrWhite,clrWhite,8);
+         CreateButton("BUYLOT","0.00",PosX+125,PosY+280,160,35,clrBlack,clrWhite,clrWhite,8);
+         CreateButton("SELL","SELL (0)",PosX+10,PosY+320,120,35,clrBlack,clrWhite,clrWhite,8);
+         CreateButton("SELLLOT","0.00",PosX+125,PosY+320,160,35,clrBlack,clrWhite,clrWhite,8);
+         CreateButton("SPREAD","SPREAD",PosX+10,PosY+360,120,35,clrBlack,clrWhite,clrWhite,8);
+         CreateButton("SPREADVALUE",DoubleToString(MarketInfo(_Symbol,MODE_SPREAD),0),PosX+125,PosY+360,160,35,clrBlack,clrWhite,clrWhite,8);
+    
+    CreateButton1("button1","$ Profit $",x,20,80,30,Green,White,Blue,10); 
+     
+     if(CheckExpiry && TimeCurrent() > expiryDate)
+     {
+         Alert("LICENSE EXPIRED. Please Contact (+91) 6351618392 ROYAL TRADING INVESTMENTS.");
+         ExpertRemove();
+     }
+    
+  
+     if(CheckAccountLock && AccountNumber()!=account)
+     {
+          Alert("INVALID LICENSE Please Contact (+91) 6351618392 ROYAL TRADING INVESTMENTS:="+account);
+          ExpertRemove();
+     }
+   
+            string _split=inpLot;
+            string _sep=",";                                                 
+            ushort _u_sep;                                                    
+            
+            
+             _u_sep=StringGetCharacter(_sep,0);
+            int Per_k=StringSplit(_split,_u_sep,_symlot);
+            
+            totallot = ArraySize(_symlot);
+            
+            
+            
+            string _split2=inpPipSteps;
+            string _sep2=",";                                                 
+            ushort _u_sep2;                                                    
+            
+            
+             _u_sep2=StringGetCharacter(_sep2,0);
+            int Per_k2=StringSplit(_split2,_u_sep2,_sympip);
+            
+            totalpipsteps = ArraySize(_sympip);
+            
+            
+
+            
+            
+            
+            string _split_TP=inpTakeProfit;
+            string _sep_TP=",";                                                 
+            ushort _u_sep_TP;                                                    
+            
+            
+             _u_sep_TP=StringGetCharacter(_sep_TP,0);
+            int Per_k_TP=StringSplit(_split_TP,_u_sep_TP,_symtp);
+            
+            totaltp = ArraySize(_symtp);
+            
+//------------------------------------------------------
+//Broker 4 or 5 digits
+ DigitPoints=MarketInfo(Symbol(),MODE_POINT);
+ MultiplierPoint=1;
+   if((MarketInfo(Symbol(),MODE_DIGITS)==3) || (MarketInfo(Symbol(),MODE_DIGITS)==5))
+   {
+     MultiplierPoint=10;
+      DigitPoints*=MultiplierPoint;
+   }
+//------------------------------------------------------
+//Minimum trailing, take profit and stop loss
+StopLevel=MathMax(MarketInfo(Symbol(),MODE_FREEZELEVEL)/MultiplierPoint,MarketInfo(Symbol(),MODE_STOPLEVEL)/MultiplierPoint);
+   
+//---
+return(INIT_SUCCEEDED);
+  }
+  datetime StartTimer;
+//+------------------------------------------------------------------+
+//| Expert deinitialization function                                 |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+  {
+//---
+   
+  }
+//+------------------------------------------------------------------+
+//| Expert tick function                                             |
+//+------------------------------------------------------------------+
+void OnTick()
+  {
+//---
+
+         
+ if (IsTesting()) 
+ {
+      if(ObjectGetInteger(ChartID(),"button1",OBJPROP_STATE)==true) 
+      {
+         ClosePos(_Symbol);
+         ObjectSetInteger(ChartID(),"button1",OBJPROP_STATE,false);
+      }
+ }
+ 
+         
+                  
+                  
+            Display();
+            Call_Equity();
+            
+            if(CountEverything()==0)
+            {
+                  LabelProfit();
+                  FirstTime=false;
+                  
+                  StartTimer=TimeCurrent();
+            }
+         
+         
+         if(CountBuy()+CountSell()==0)
+         {
+               gapper=0;
+         }
+         
+         if(CountEverything()==0)
+         {
+                                       GlobalVariableSet(_Symbol+"Upper",0);
+                                       GlobalVariableSet(_Symbol+"Lower",0);
+                                       
+                                       ObjectDelete("Buy");
+                                       ObjectDelete("Sell");
+                 
+                           double OrdrLotSize=_symlot[0];
+                     
+                           if(totallot-1>=Counter)
+                           OrdrLotSize = _symlot[Counter];  
+                           else
+                           OrdrLotSize = _symlot[totallot-1];
+                           
+                           
+                           
+                           
+                           double Dist=_sympip[0];
+                     
+                           if(totalpipsteps-1>=Counter)
+                           Dist = _sympip[Counter];  
+                           else
+                           Dist = _sympip[totalpipsteps-1];
+                           
+                           
+                           
+                           
+                           
+                           double tp=_symtp[0];
+                     
+                           if(totaltp-1>=Counter)
+                           tp = _symtp[Counter];  
+                           else
+                           tp = _symtp[totaltp-1];
+                           
+                           
+                           OrdrLotSize = OrdrLotSize * Multiplier;
+                 
+                 
+                  if( CountBuy()==0 && CountSell()==0 && FirstTime==false)
+                  {
+                           
+                           
+                           if(FirstOrderType==MarketBuy) 
+                           {   
+                                 if(OpenPosition(OP_BUY,OrdrLotSize,Ask,0,tp)==true)
+                                 {
+                                       if(AddSpreadCommission)
+                                       gapper = ProfitToPoint() +SpreadCount();
+                                       
+                                        FirstTime=true;
+                                       
+                                       GlobalVariableSet(_Symbol+"Upper",Ask);
+                                       GlobalVariableSet(_Symbol+"Lower",(LastOrderPrice()-(Dist*DigitPoints)));
+                                       
+                                       CreateBuy(GlobalVariableGet(_Symbol+"Upper"));
+                                       CreateSell(GlobalVariableGet(_Symbol+"Lower"));
+                                       
+                                       /*
+                                       double OrdrLotSize=_symlot[0];
+                     
+                                       if(totallot-1>=Counter)
+                                       OrdrLotSize = _symlot[Counter];  
+                                       else
+                                       OrdrLotSize = _symlot[totallot-1];
+                                       
+                                       
+                                       
+                                       
+                                       double Dist=_sympip[0];
+                                 
+                                       if(totalpipsteps-1>=Counter)
+                                       Dist = _sympip[Counter];  
+                                       else
+                                       Dist = _sympip[totalpipsteps-1];
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       double tp=_symtp[0];
+                                 
+                                       if(totaltp-1>=Counter)
+                                       tp = _symtp[Counter];  
+                                       else
+                                       tp = _symtp[totaltp-1];
+                                       
+                                       
+                                       
+                                 
+                                       double OpenPrice=NormalizeDouble(LastOrderPrice()-(Dist*DigitPoints),Digits);
+                                        double MainTPSell=NormalizeDouble(OpenPrice-(tp*DigitPoints),Digits);
+                                        
+                                        if(!UseTakeProfit)
+                                             MainTPSell=0;
+                                             
+                                       if(OrderSend(Symbol(),OP_SELLSTOP,OrdrLotSize,OpenPrice,3,0,MainTPSell,"Sell",Magic_Number,0,clrRed)<=0)
+                                                                                    Print(GetLastError());
+                                       else
+                                             Counter++;
+                                                                                                           
+                                       */                                             
+                                                                                    
+                                 }   
+                           }
+                           else if(FirstOrderType==MarketSell)
+                           {
+                                 if(OpenPosition(OP_SELL,OrdrLotSize,Bid,0,tp)==true)
+                                 {
+                                       if(AddSpreadCommission)
+                                       gapper = ProfitToPoint() +SpreadCount();
+                                       
+                                         FirstTime=true;
+                                        
+                                       GlobalVariableSet(_Symbol+"Upper",(LastOrderPrice()+(Dist*DigitPoints)));
+                                       GlobalVariableSet(_Symbol+"Lower",Bid);
+                                       
+                                       
+                                       CreateBuy(GlobalVariableGet(_Symbol+"Upper"));
+                                       CreateSell(GlobalVariableGet(_Symbol+"Lower"));
+                                        /*
+                                        double OrdrLotSize=_symlot[0];
+                     
+                                       if(totallot-1>=Counter)
+                                       OrdrLotSize = _symlot[Counter];  
+                                       else
+                                       OrdrLotSize = _symlot[Counter-1];
+                                       
+                                       
+                                       
+                                       
+                                       double Dist=_sympip[0];
+                                 
+                                       if(totalpipsteps-1>=Counter)
+                                       Dist = _sympip[Counter];  
+                                       else
+                                       Dist = _sympip[totalpipsteps-1];
+                                       
+                                       
+                                       
+                                       
+                                       
+                                       double tp=_symtp[0];
+                                 
+                                       if(totaltp-1>=Counter)
+                                       tp = _symtp[Counter];  
+                                       else
+                                       tp = _symtp[totaltp-1];
+                                       
+                                      
+                                       
+                                       double OpenPrice=NormalizeDouble(LastOrderPrice()+(Dist*DigitPoints),Digits);
+                                       double MainTPSell=NormalizeDouble(OpenPrice+(tp*DigitPoints),Digits);
+                                       
+                                       if(!UseTakeProfit)
+                                             MainTPSell=0;
+                                             
+                                       if(OrderSend(Symbol(),OP_BUYSTOP,OrdrLotSize,OpenPrice,3,0,MainTPSell,"Buy",Magic_Number,0,clrRed)<=0)
+                                                                                    Print(GetLastError());
+                                       else
+                                             Counter++;
+                                        */                                                                    
+            
+                                 } 
+                           }
+                                                                          
+                                                                                                                         
+                  }
+                  
+                  
+                  
+                   
+         }
+  
+                  
+         
+         
+                     
+         if(CountAllOpened()>0  && FirstTime==true)
+         {
+         
+         
+                          double OrdrLotSize=_symlot[0];
+                     
+                           if(totallot-1>=Counter)
+                           OrdrLotSize = _symlot[Counter];  
+                           else
+                           OrdrLotSize = _symlot[totallot-1];
+                           
+                           
+                           
+                           
+                           double Dist=_sympip[0];
+                     
+                           if(totalpipsteps-1>=Counter)
+                           Dist = _sympip[Counter];  
+                           else
+                           Dist = _sympip[totalpipsteps-1];
+                           
+                           
+                           
+                           
+                           double tp=_symtp[0];
+                     
+                           if(totaltp-1>=Counter)
+                           tp = _symtp[Counter];  
+                           else
+                           tp = _symtp[totaltp-1];
+         
+                           
+                          
+                           OrdrLotSize = OrdrLotSize * Multiplier;
+                  
+                  if(CountBuy()>0 && CountSell()>0)
+                  {
+                          CloseOthers();
+                          
+                  }
+                  
+                  if(CountSell()==0 && CountBuy()>0 && LastOrderType()==0 && CountAll()<MaxTrade)
+                  {
+                  
+                     
+                        double Upper = GlobalVariableGet(_Symbol+"Upper") + (gapper*DigitPoints);
+                        double Lower = GlobalVariableGet(_Symbol+"Lower") - (gapper*DigitPoints);
+                        
+                        double MainTPSell=NormalizeDouble(Bid-(tp*DigitPoints),Digits);
+                        
+                        
+                        if(!UseTakeProfit)
+                                             MainTPSell=0;
+                        
+                        if(Lower>0 && Lower>Ask)
+                        {                     
+                              if(OrderSend(Symbol(),OP_SELL,NormalizeDouble(OrdrLotSize,2),Bid,3,0,MainTPSell,"Sell",Magic_Number,0,clrRed)<=0)
+                                                                                         Print(GetLastError());          
+                              else
+                              {
+                                             gapper = ProfitToPoint() +SpreadCount();
+                                             Counter++;
+                              }
+                                                   
+                        }                  
+                  }
+                  
+                  if(CountBuy()==0 && CountSell()>0 &&  LastOrderType()==1 && CountAll()<MaxTrade)
+                  {
+                        
+                        double Upper = GlobalVariableGet(_Symbol+"Upper") + (gapper*DigitPoints);
+                        double Lower = GlobalVariableGet(_Symbol+"Lower") - (gapper*DigitPoints);
+                           
+                        double MainTPBuy=NormalizeDouble(Ask+(tp*DigitPoints),Digits);
+                        
+                        
+                        if(!UseTakeProfit)
+                                             MainTPBuy=0;
+                                             
+                        if(Upper>0 && Upper<Bid)
+                        {                     
+                                 if(OrderSend(Symbol(),OP_BUY,NormalizeDouble(OrdrLotSize,2),Ask,3,0,MainTPBuy,"Buy",Magic_Number,0,clrBlue)<=0)
+                                                                                            Print(GetLastError());
+                                 else
+                                 {
+                                                gapper = ProfitToPoint() +SpreadCount();
+                                                Counter++;
+                                 }
+                        }    
+                                   
+                  }
+         
+         }
+         
+         
+        
+         
+         
+         
+        /* 
+         
+             if(GetLastOrderTPorNot()==true  && Counter>0 && CountBuy()+CountSell()==0 )
+             {
+                     Counter=0;
+                     ObjectDelete("Upper");
+                     ObjectDelete("Down");
+             }
+             
+        
+        if(CountBuy()+CountSell()+CountSellStop()+CountBuyStop()==0  && Counter==0)
+          {
+                           
+                         
+                     
+          } 
+          
+          
+         if( Counter>0)
+          {
+          
+                     if(GetLastOrderTPorNot()==false  && CountBuy()+CountSell()==0)
+                     {
+                           
+                           double OrdrLotSize=_symlot[0];
+                     
+                           if(totallot-1>=Counter)
+                           OrdrLotSize = _symlot[Counter];  
+                           else
+                           OrdrLotSize = _symlot[totallot-1];
+                           
+                           
+                           
+                           double tp=_symtp[0];
+                     
+                           if(totaltp-1>=Counter)
+                           tp = _symtp[Counter];  
+                           else
+                           tp = _symtp[totaltp-1];
+                           
+                           
+                           if(LastOrderType()==1) 
+                              if(OpenPosition(OP_BUY,OrdrLotSize,Ask,0,tp)==true)
+                              {
+                                     Counter++;
+         
+                              } 
+                              
+                              
+                           if(LastOrderType()==0)  
+                              if(OpenPosition(OP_SELL,OrdrLotSize,Bid,0,tp)==true)
+                              {
+                                     Counter++;
+         
+                              }  
+                     }
+                     
+                     
+                     
+                     
+          
+          }
+          
+          */
+          
+          
+ 
+   
+  }
+//+------------------------------------------------------------------+
+
+
+bool OpenPosition(int Type, double LotSize1, double OpenPrice, int Sl, int Tp)
+{
+      
+     if(!UseTakeProfit) 
+         Tp=0;
+         
+     if(Type==0)
+     {
+            
+            double SL=0, TP=0;
+            
+            if(Sl>0)
+                  SL = OpenPrice-(Sl*DigitPoints);
+            else
+                  SL = 0;
+            
+            if(Tp>0)
+                  TP = OpenPrice+(Tp*DigitPoints);
+            else
+                  TP = 0;
+                  
+                  
+            int ticket = OrderSend(Symbol(),OP_BUY,LotSize1,OpenPrice,3,SL,TP,"ROYAL TRADING INVESTMENTS",Magic_Number,0,clrBlue);
+            if(ticket>0)
+            {
+                  
+                                             Counter++;
+                  return(true);    
+            }      
+     }
+      
+     if(Type==1)
+     {
+            double SL=0, TP=0;
+            
+            if(Sl>0)
+                  SL = OpenPrice+(Sl*DigitPoints);
+            else
+                  SL = 0;
+            
+            if(Tp>0)
+                  TP = OpenPrice-(Tp*DigitPoints);
+            else
+                  TP = 0;
+                  
+                  
+            int ticket = OrderSend(Symbol(),OP_SELL,LotSize1,OpenPrice,3,SL,TP,"ROYAL TRADING INVESTMENTS",Magic_Number,0,clrRed);
+            if(ticket>0)
+            {
+                  
+                  Counter++;
+                  return(true);
+            }      
+     }
+     
+     if(Type==2)
+     {
+     
+            double SL=0, TP=0;
+            
+            if(Sl>0)
+                  SL = OpenPrice-(Sl*DigitPoints);
+            else
+                  SL = 0;
+            
+            if(Tp>0)
+                  TP = OpenPrice+(Tp*DigitPoints);
+            else
+                  TP = 0;
+     
+            int ticket = OrderSend(Symbol(),OP_BUYLIMIT,LotSize1,OpenPrice,3,SL,TP,"ROYAL TRADING INVESTMENTS",Magic_Number,0,clrBlue);
+            if(ticket>0)
+            {
+                  
+                  Counter++;
+                  return(true);
+            }   
+     
+     }
+     
+     if(Type==3)
+     {
+            double SL=0, TP=0;
+            
+            if(Sl>0)
+                  SL = OpenPrice+(Sl*DigitPoints);
+            else
+                  SL = 0;
+            
+            if(Tp>0)
+                  TP = OpenPrice-(Tp*DigitPoints);
+            else
+                  TP = 0;
+                  
+            int ticket =  OrderSend(Symbol(),OP_SELLLIMIT,LotSize1,OpenPrice,3,SL,TP,"ROYAL TRADING INVESTMENTS",Magic_Number,0,clrRed);
+            if(ticket>0)
+            {
+                  
+                  Counter++;
+                  return(true);
+            }   
+     }
+     
+     if(Type==4)
+     {
+            double SL=0, TP=0;
+            
+            if(Sl>0)
+                  SL = OpenPrice-(Sl*DigitPoints);
+            else
+                  SL = 0;
+            
+            if(Tp>0)
+                  TP = OpenPrice+(Tp*DigitPoints);
+            else
+                  TP = 0;
+                  
+                  
+            int ticket = OrderSend(Symbol(),OP_BUYSTOP,LotSize1,OpenPrice,3,SL,TP,"ROYAL TRADING INVESTMENTS",Magic_Number,0,clrBlue);
+            if(ticket>0)
+            {
+                  
+                  Counter++;
+                  return(true);
+            }   
+     }
+
+     if(Type==5)
+     {
+            double SL=0, TP=0;
+            
+            if(Sl>0)
+                  SL = OpenPrice+(Sl*DigitPoints);
+            else
+                  SL = 0;
+            
+            if(Tp>0)
+                  TP = OpenPrice-(Tp*DigitPoints);
+            else
+                  TP = 0;
+                  
+                  
+            int ticket = OrderSend(Symbol(),OP_SELLSTOP,LotSize1,OpenPrice,3,SL,TP,"ROYAL TRADING INVESTMENTS",Magic_Number,0,clrRed);
+            if(ticket>0)
+            {
+                  
+                  Counter++;
+                  return(true);
+            }   
+     }
+     return(false);
+     
+}
+
+
+
+int CountBuy()
+{
+   int open=0;
+   for(int i=0;i<OrdersTotal();i++)
+   {
+        bool ticket = OrderSelect(i,SELECT_BY_POS,MODE_TRADES);
+        if(OrderSymbol()==Symbol() && OrderMagicNumber()==Magic_Number && OrderType()==OP_BUY)
+        {
+          open++;
+        }   
+   }
+   
+   return(open); 
+   
+}
+
+int CountSell()
+{
+   int open=0;
+   for(int i=0;i<OrdersTotal();i++)
+   {
+        bool ticket = OrderSelect(i,SELECT_BY_POS,MODE_TRADES);
+        if(OrderSymbol()==Symbol() && OrderMagicNumber()==Magic_Number && OrderType()==OP_SELL)
+        {
+          open++;
+        }   
+   }
+   
+   return(open); 
+   
+}
+
+
+
+int CountBuyStop()
+{
+   int open=0;
+   for(int i=0;i<OrdersTotal();i++)
+   {
+        bool ticket = OrderSelect(i,SELECT_BY_POS,MODE_TRADES);
+        if(OrderSymbol()==Symbol() && OrderMagicNumber()==Magic_Number && OrderType()==OP_BUYSTOP)
+        {
+          open++;
+        }   
+   }
+   
+   return(open); 
+   
+}
+
+int CountSellStop()
+{
+   int open=0;
+   for(int i=0;i<OrdersTotal();i++)
+   {
+        bool ticket = OrderSelect(i,SELECT_BY_POS,MODE_TRADES);
+        if(OrderSymbol()==Symbol() && OrderMagicNumber()==Magic_Number && OrderType()==OP_SELLSTOP)
+        {
+          open++;
+        }   
+   }
+   
+   return(open); 
+   
+}
+
+
+int CountBuyLimit()
+{
+   int open=0;
+   for(int i=0;i<OrdersTotal();i++)
+   {
+        bool ticket = OrderSelect(i,SELECT_BY_POS,MODE_TRADES);
+        if(OrderSymbol()==Symbol() && OrderMagicNumber()==Magic_Number && OrderType()==OP_BUYLIMIT)
+        {
+          open++;
+        }   
+   }
+   
+   return(open); 
+   
+}
+
+int CountSellLimit()
+{
+   int open=0;
+   for(int i=0;i<OrdersTotal();i++)
+   {
+        bool ticket = OrderSelect(i,SELECT_BY_POS,MODE_TRADES);
+        if(OrderSymbol()==Symbol() && OrderMagicNumber()==Magic_Number && OrderType()==OP_SELLLIMIT)
+        {
+          open++;
+        }   
+   }
+   
+   return(open); 
+   
+}
+
+
+
+
+int CountTotal()
+{
+   int open=0;
+   for(int i=0;i<OrdersTotal();i++)
+   {
+        bool ticket = OrderSelect(i,SELECT_BY_POS,MODE_TRADES);
+        if(OrderSymbol()==Symbol() && OrderMagicNumber()==Magic_Number && (OrderType()==OP_BUY || OrderType()==OP_SELL  || OrderType()==OP_SELLSTOP ||  OrderType()==OP_BUYSTOP || OrderType()==OP_SELLLIMIT || OrderType()==OP_BUYLIMIT ))
+        {
+          open++;
+        }   
+   }
+   
+   return(open); 
+   
+}
+
+bool GetLastOrderTPorNot()
+{
+   
+   bool check=false;
+   
+   for(int i=OrdersHistoryTotal()-1;i>=0;i--)
+   {
+      if(OrderSelect(i,SELECT_BY_POS,MODE_HISTORY)
+      && OrderSymbol()== Symbol() 
+      && (OrderMagicNumber() == Magic_Number) 
+      && (OrderOpenTime() >= StartTime)
+      )
+      {
+         
+         if(OrderType()==OP_BUY && OrderClosePrice()>=OrderOpenPrice())
+         {
+                 check=true; 
+                 break; 
+         }  
+         if(OrderType()==OP_SELL && OrderClosePrice()<=OrderOpenPrice())
+         {
+                  check=true; 
+                 break;
+         }
+            
+         
+      }
+   }
+   
+   return(check);
+
+}  
+
+
+
+void CreateUpLine(double price,color clr)
+{
+
+                        if(!ObjectCreate(0,"Upper",OBJ_HLINE,0,iTime(Symbol(),0,0),price)) 
+                       { 
+                             
+                       }
+                       else
+                       {
+                              ObjectSetInteger(0,"Upper",OBJPROP_COLOR,clr);
+                              ObjectSetInteger(0,"Upper",OBJPROP_WIDTH,2);
+                       } 
+}
+
+void CreateDnLine(double price,color clr)
+{
+
+                       if(!ObjectCreate(0,"Down",OBJ_HLINE,0,iTime(Symbol(),0,0),price)) 
+                       { 
+                             
+                       }
+                       else
+                       {
+                              ObjectSetInteger(0,"Down",OBJPROP_COLOR,clr);
+                              ObjectSetInteger(0,"Down",OBJPROP_WIDTH,2);
+                       } 
+}
+
+
+int LastOrderType()
+{  
+    datetime lastOrderTime  = 0;
+    int type=-1;
+    for(int j = 0 ; j<OrdersTotal() ; j++) 
+         {
+            if (OrderSelect(j,SELECT_BY_POS,MODE_TRADES)==True)
+                  {
+                     if(OrderType()<2 && OrderSymbol()==_Symbol)
+                        {
+                             if(OrderOpenTime()> lastOrderTime)
+                                   {
+                                       lastOrderTime   = OrderOpenTime();
+                                       if(OrderType()==OP_BUY)
+                                             type=0;
+                                       if(OrderType()==OP_SELL)
+                                             type=1;      
+                                   }
+                              else     continue;
+                         }
+                     else   continue;
+                  }
+             else      continue;
+          }
+    return(type);
+}
+
+
+int CountAllPending()
+{
+   int open=0;
+   for(int i=0;i<OrdersTotal();i++)
+   {
+        OrderSelect(i,SELECT_BY_POS,MODE_TRADES);
+        if(OrderSymbol()==Symbol() && OrderMagicNumber()==Magic_Number && (OrderType()==OP_BUYSTOP || OrderType()==OP_SELLSTOP) )
+        {
+          open++;
+        }   
+   }
+   
+   return(open); 
+   
+}
+
+int CountAllOpened()
+{
+   int open=0;
+   for(int i=0;i<OrdersTotal();i++)
+   {
+        OrderSelect(i,SELECT_BY_POS,MODE_TRADES);
+        if(OrderSymbol()==Symbol() && OrderMagicNumber()==Magic_Number && (OrderType()==OP_BUY || OrderType()==OP_SELL) )
+        {
+          open++;
+        }   
+   }
+   
+   return(open); 
+   
+}
+
+int CountEverything()
+{
+   
+   int open=0;
+   for(int i=0;i<OrdersTotal();i++)
+   {
+        OrderSelect(i,SELECT_BY_POS,MODE_TRADES);
+        if(OrderSymbol()==Symbol() && OrderMagicNumber()==Magic_Number && (OrderType()==OP_BUY || OrderType()==OP_SELL || OrderType()==OP_BUYSTOP || OrderType()==OP_SELLSTOP) )
+        {
+          open++;
+        }   
+   }
+   
+   return(open); 
+}
+
+double LastOrderPrice()
+{  
+    datetime lastOrderTime  = 0;
+    double OpenedPrice=0;
+    for(int j = 0 ; j<OrdersTotal() ; j++) 
+         {
+            if (OrderSelect(j,SELECT_BY_POS,MODE_TRADES)==True)
+                  {
+                     if(OrderType()<2 && OrderSymbol()==_Symbol)
+                        {
+                             if(OrderOpenTime()> lastOrderTime)
+                                   {
+                                       lastOrderTime   = OrderOpenTime();
+                                       OpenedPrice = OrderOpenPrice();
+                                   }
+                              else     continue;
+                         }
+                     else   continue;
+                  }
+             else      continue;
+          }
+    return(OpenedPrice);
+}
+
+
+bool LastOrderProfitLossNew()
+{  
+   bool last=false;
+   for(int i=OrdersHistoryTotal()-1;i>=0;i--)
+   {
+         if(OrderSelect(i, SELECT_BY_POS,MODE_HISTORY))
+         {
+               if(OrderSymbol()==Symbol() && OrderMagicNumber()==Magic_Number)
+                {
+                   if(OrderProfit()>0) last=true;
+                   break; 
+                }   
+          }      
+    }
+    return(last);
+    
+}
+   
+void LabelProfit()
+  {   
+         double profit = 0;
+         double price = 0;
+         datetime close = 0;
+         int tik=0;
+         for(int i=OrdersHistoryTotal()-1; i>=0; i--)
+         {
+               if(!OrderSelect(i,SELECT_BY_POS,MODE_HISTORY))
+                  continue;
+               if(OrderSymbol() == _Symbol && OrderMagicNumber() == Magic_Number && StartTimer <= OrderOpenTime() )
+               {
+                  profit = profit+OrderProfit()+OrderSwap()+OrderCommission(); tik = OrderTicket();
+                  price = OrderClosePrice();
+                  close = OrderCloseTime();
+               }   
+         }
+           
+           
+           if(profit != 0)
+           {
+                  BitmapCreate(0,"bit"+TimeCurrent(),0,close-(10*_Period*60),price,"::Images\\Untitled.bmp",53,16);
+                  TextCreate(0,"txt"+TimeCurrent(),0,close-(10*_Period*60),price,"$"+DoubleToStr(profit,2),"Arial Black",9,clrWhite,true);
+           }
+  }
+  
+  
+  bool BitmapCreate(const long            chart_ID=0,        // chart's ID
+                  const string          name="Bitmap",     // bitmap name
+                  const int             sub_window=0,      // subwindow index
+                  datetime              time=0,            // anchor point time
+                  double                price=0,           // anchor point price
+                  const string          file="",           // bitmap file name
+                  const int             width=10,          // visibility scope X coordinate
+                  const int             height=10,         // visibility scope Y coordinate
+                  const int             x_offset=0,        // visibility scope shift by X axis
+                  const int             y_offset=0,        // visibility scope shift by Y axis
+                  const color           clr=clrRed,        // border color when highlighted
+                  const ENUM_LINE_STYLE style=STYLE_SOLID, // line style when highlighted
+                  const int             point_width=1,     // move point size
+                  const bool            back=false,        // in the background
+                  const bool            selection=false,   // highlight to move
+                  const bool            hidden=false,       // hidden in the object list
+                  const long            z_order=0)         // priority for mouse click
+  {
+//--- set anchor point coordinates if they are not set
+   ChangeBitmapEmptyPoint(time,price);
+   
+//--- reset the error value
+   ResetLastError();
+//--- create a bitmap
+   if(!ObjectCreate(chart_ID,name,OBJ_BITMAP,sub_window,time,price))
+     {
+      Print(__FUNCTION__,
+            ": failed to create a bitmap in the chart window! Error code = ",GetLastError());
+      return(false);
+     }
+//--- set the path to the image file
+   if(!ObjectSetString(chart_ID,name,OBJPROP_BMPFILE,file))
+     {
+      Print(__FUNCTION__,
+            ": failed to load the image! Error code = ",GetLastError());
+      return(false);
+     }
+//--- set visibility scope for the image; if width or height values
+//--- exceed the width and height (respectively) of a source image,
+//--- it is not drawn; in the opposite case,
+//--- only the part corresponding to these values is drawn
+   ObjectSetInteger(chart_ID,name,OBJPROP_XSIZE,width);
+   ObjectSetInteger(chart_ID,name,OBJPROP_YSIZE,height);
+//--- set the part of an image that is to be displayed in the visibility scope
+//--- the default part is the upper left area of an image; the values allow
+//--- performing a shift from this area displaying another part of the image
+   ObjectSetInteger(chart_ID,name,OBJPROP_XOFFSET,x_offset);
+   ObjectSetInteger(chart_ID,name,OBJPROP_YOFFSET,y_offset);
+//--- set the border color when object highlighting mode is enabled
+   ObjectSetInteger(chart_ID,name,OBJPROP_COLOR,clr);
+//--- set the border line style when object highlighting mode is enabled
+   ObjectSetInteger(chart_ID,name,OBJPROP_STYLE,style);
+//--- set a size of the anchor point for moving an object
+   ObjectSetInteger(chart_ID,name,OBJPROP_WIDTH,point_width);
+//--- display in the foreground (false) or background (true)
+   ObjectSetInteger(chart_ID,name,OBJPROP_BACK,back);
+//--- enable (true) or disable (false) the mode of moving the label by mouse
+   ObjectSetInteger(chart_ID,name,OBJPROP_SELECTABLE,selection);
+   ObjectSetInteger(chart_ID,name,OBJPROP_SELECTED,selection);
+//--- hide (true) or display (false) graphical object name in the object list
+   ObjectSetInteger(chart_ID,name,OBJPROP_HIDDEN,hidden);
+//--- set the priority for receiving the event of a mouse click in the chart
+   ObjectSetInteger(chart_ID,name,OBJPROP_ZORDER,z_order);
+//--- successful execution
+   return(true);
+  }
+ 
+void ChangeBitmapEmptyPoint(datetime &time,double &price)
+  {
+//--- if the point's time is not set, it will be on the current bar
+   if(!time)
+      time=TimeCurrent();
+//--- if the point's price is not set, it will have Bid value
+   if(!price)
+      price=SymbolInfoDouble(Symbol(),SYMBOL_BID);
+  }   
+//+-------
+
+bool TextCreate(const long              chart_ID=0,               // chart's ID
+                const string            name="Text",              // object name
+                const int               sub_window=0,             // subwindow index
+                datetime                time=0,                   // anchor point time
+                double                  price=0,                  // anchor point price
+                const string            text="Text",              // the text itself
+                const string            font="Arial",             // font
+                const int               font_size=10,             // font size
+                const color             clr=clrRed,               // color
+                const double            angle=0.0,                // text slope
+                const ENUM_ANCHOR_POINT anchor=ANCHOR_UPPER, // anchor type
+                const bool              back=false,               // in the background
+                const bool              selection=false,          // highlight to move
+                const bool              hidden=true,              // hidden in the object list
+                const long              z_order=0)                // priority for mouse click
+  {
+//--- set anchor point coordinates if they are not set
+//ChangeTextEmptyPoint(time,price);
+//--- reset the error value
+   ResetLastError();
+//--- create Text object
+   if(!ObjectCreate(chart_ID,name,OBJ_TEXT,sub_window,time,price))
+     {
+      Print(__FUNCTION__,
+            ": failed to create \"Text\" object! Error code = ",GetLastError());
+      return(false);
+     }
+//--- set the text
+   ObjectSetString(chart_ID,name,OBJPROP_TEXT,text);
+//--- set text font
+   ObjectSetString(chart_ID,name,OBJPROP_FONT,font);
+//--- set font size
+   ObjectSetInteger(chart_ID,name,OBJPROP_FONTSIZE,font_size);
+//--- set the slope angle of the text
+   ObjectSetDouble(chart_ID,name,OBJPROP_ANGLE,angle);
+//--- set anchor type
+   ObjectSetInteger(chart_ID,name,OBJPROP_ANCHOR,anchor);
+//--- set color
+   ObjectSetInteger(chart_ID,name,OBJPROP_COLOR,clr);
+//--- display in the foreground (false) or background (true)
+   ObjectSetInteger(chart_ID,name,OBJPROP_BACK,back);
+//--- enable (true) or disable (false) the mode of moving the object by mouse
+   ObjectSetInteger(chart_ID,name,OBJPROP_SELECTABLE,selection);
+   ObjectSetInteger(chart_ID,name,OBJPROP_SELECTED,selection);
+//--- hide (true) or display (false) graphical object name in the object list
+   ObjectSetInteger(chart_ID,name,OBJPROP_HIDDEN,hidden);
+//--- set the priority for receiving the event of a mouse click in the chart
+   ObjectSetInteger(chart_ID,name,OBJPROP_ZORDER,z_order);
+//--- successful execution
+   return(true);
+  }
+  
+  void CreateButton(string name, string txt,int x, int y,int w, int h,color tcolor,color bgcolor,color bcolor, int f)
+  {
+   ObjectCreate(0,name,OBJ_BUTTON,0,0,0);
+   ObjectSetInteger(0,name,OBJPROP_XDISTANCE,x);
+   ObjectSetInteger(0,name,OBJPROP_YDISTANCE,y);
+   ObjectSetInteger(0,name,OBJPROP_XSIZE,w);
+   ObjectSetInteger(0,name,OBJPROP_YSIZE,h);
+   ObjectSetInteger(0,name,OBJPROP_COLOR,tcolor);
+   ObjectSetInteger(0,name,OBJPROP_BGCOLOR,bgcolor);
+   ObjectSetInteger(0,name,OBJPROP_BORDER_COLOR,bcolor);
+   ObjectSetString(0,name,OBJPROP_TEXT,txt);
+   ObjectSetInteger(0,name,OBJPROP_FONTSIZE,f);
+   ObjectSetInteger(0,name,OBJPROP_BORDER_TYPE,BORDER_FLAT);
+   ObjectSetInteger(0,name,OBJPROP_BACK,false);
+   ObjectSetInteger(0,name,OBJPROP_HIDDEN,true);
+   ObjectSetInteger(0,name,OBJPROP_STATE,false);
+  }
+
+void DeleteButton()
+  {
+   for(int i=ObjectsTotal(); i>=0; i--)
+     {
+      string name = ObjectName(i);
+      if(ObjectType(name) == OBJ_BUTTON)
+         ObjectDelete(0,name);
+     }
+  }
+  
+  void Display()
+  {
+            ObjectSetString(0,"TIME",OBJPROP_TEXT,"Time Terminal: "+TimeToString(TimeCurrent(),TIME_SECONDS));
+            ObjectSetString(0,"BALANCEVALUE",OBJPROP_TEXT,DoubleToStr(AccountBalance(),2));
+            ObjectSetString(0,"EQUITYVALUE",OBJPROP_TEXT,DoubleToStr(AccountEquity(),2));
+            ObjectSetString(0,"BUY",OBJPROP_TEXT,"BUY ("+DoubleToStr(CountBuy(),0)+")");
+            ObjectSetString(0,"BUYLOT",OBJPROP_TEXT,DoubleToStr(CountBuyLot(),2));
+            ObjectSetString(0,"SELL",OBJPROP_TEXT,"SELL ("+DoubleToStr(CountSell(),0)+")");
+            ObjectSetString(0,"SELLLOT",OBJPROP_TEXT,DoubleToStr(CountSellLot(),2));
+         
+            double p = TotalPL();
+            double cp = ClosedProfit();
+         
+            if(p < 0)
+              {
+               ObjectSetString(0,"PROFITVALUE",OBJPROP_TEXT,DoubleToStr(p,2));
+               ObjectSetInteger(0,"PROFIT",OBJPROP_BGCOLOR,clrRed);
+               ObjectSetInteger(0,"PROFIT",OBJPROP_BORDER_COLOR,clrRed);
+               ObjectSetInteger(0,"PROFITVALUE",OBJPROP_COLOR,clrRed);
+               ObjectSetInteger(0,"PROFITVALUE",OBJPROP_BORDER_COLOR,clrRed);
+              }
+         
+            if(p >= 0)
+              {
+               ObjectSetString(0,"PROFITVALUE",OBJPROP_TEXT,DoubleToStr(p,2));
+               ObjectSetInteger(0,"PROFIT",OBJPROP_BGCOLOR,clrGreen);
+               ObjectSetInteger(0,"PROFIT",OBJPROP_BORDER_COLOR,clrGreen);
+               ObjectSetInteger(0,"PROFITVALUE",OBJPROP_COLOR,clrGreen);
+               ObjectSetInteger(0,"PROFITVALUE",OBJPROP_BORDER_COLOR,clrGreen);
+              }
+         
+            if(cp < 0)
+              {
+               ObjectSetString(0,"PROFITCLOSEDVALUE",OBJPROP_TEXT,DoubleToStr(cp,2));
+               ObjectSetInteger(0,"PROFITCLOSE",OBJPROP_BGCOLOR,clrRed);
+               ObjectSetInteger(0,"PROFITCLOSE",OBJPROP_BORDER_COLOR,clrRed);
+               ObjectSetInteger(0,"PROFITCLOSEDVALUE",OBJPROP_COLOR,clrRed);
+               ObjectSetInteger(0,"PROFITCLOSEDVALUE",OBJPROP_BORDER_COLOR,clrRed);
+              }
+         
+            if(cp >= 0)
+              {
+               ObjectSetString(0,"PROFITCLOSEDVALUE",OBJPROP_TEXT,DoubleToStr(cp,2));
+               ObjectSetInteger(0,"PROFITCLOSE",OBJPROP_BGCOLOR,clrGreen);
+               ObjectSetInteger(0,"PROFITCLOSE",OBJPROP_BORDER_COLOR,clrGreen);
+               ObjectSetInteger(0,"PROFITCLOSEDVALUE",OBJPROP_COLOR,clrGreen);
+               ObjectSetInteger(0,"PROFITCLOSEDVALUE",OBJPROP_BORDER_COLOR,clrGreen);
+              }
+  }
+  
+  double CountBuyLot()
+  {
+   double k = 0;
+   for(int i=0; i<OrdersTotal(); i++)
+     {
+      if(OrderSelect(i,SELECT_BY_POS)==false)
+         continue;
+      if(OrderSymbol() == _Symbol && OrderMagicNumber() == Magic_Number && OrderType() == OP_BUY)
+         k = k+OrderLots();
+     }
+   return k;
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double CountSellLot()
+  {
+   double k = 0;
+   for(int i=0; i<OrdersTotal(); i++)
+     {
+      if(OrderSelect(i,SELECT_BY_POS)==false)
+         continue;
+      if(OrderSymbol() == _Symbol && OrderMagicNumber() == Magic_Number && OrderType() == OP_SELL)
+         k = k+OrderLots();
+     }
+   return k;
+  }
+  
+  
+  double TotalPL()
+  {
+   RefreshRates();
+   bool checkOrderClose = true;
+   int index = OrdersTotal()-1;
+   double profit = 0;
+   while(index >=0 && OrderSelect(index,SELECT_BY_POS,MODE_TRADES)==true)
+     {
+      if(OrderSymbol() == _Symbol && OrderMagicNumber() == Magic_Number)
+        {
+         if(OrderType() < 2)
+            profit = profit+OrderProfit()+OrderSwap()+OrderCommission();
+        }
+      index--;
+     }
+   return profit;
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double ClosedProfit()
+  {
+   double profit = 0;
+   for(int i=OrdersHistoryTotal()-1; i>=0; i--)
+     {
+      if(!OrderSelect(i,SELECT_BY_POS,MODE_HISTORY))
+         continue;
+      if(OrderSymbol() == _Symbol && OrderMagicNumber() == Magic_Number && OrderCloseTime() > StartTime)
+         profit = profit+OrderProfit()+OrderSwap()+OrderCommission();
+     }
+   return profit;
+  }
+  
+  
+  int CountAll()
+  {
+      
+        int profit = 0;
+        
+        for(int i=OrdersTotal()-1; i>=0; i--)
+        {
+               if(!OrderSelect(i,SELECT_BY_POS,MODE_TRADES))
+                  continue;
+               if(OrderSymbol() == _Symbol && OrderMagicNumber() == Magic_Number)
+                  profit++;
+        }
+      return profit;
+  
+  }
+  
+  void Call_Equity()
+  {
+                                 double Eiq_per = (  (100*ProfitCheck())/AccountEquity()  );
+                                 double Bal_per = (  (100*ProfitCheck())/AccountBalance()  );
+                                 
+                                
+                                             
+                                 if(Pro_EqPer>0)
+                                 {
+                                       if(Eiq_per>Pro_EqPer)
+                                       {
+                                             
+                                              
+                                             ClosePos(Symbol());
+                                             
+                                                 
+                                             
+                                       }
+                                 
+                                 }
+                                 
+                                 if(Pro_BalPer>0)
+                                 {
+                                       if(Bal_per>Pro_BalPer)
+                                       {
+                                            
+                                             ClosePos(Symbol());
+                                                   
+                                            
+                                             
+                                       }
+                                 
+                                 }
+                                 
+                                 if(Pro_Amounts>0)
+                                 {
+                                 
+                                       if(ProfitCheck()>Pro_Amounts+MathAbs(LossCounter))
+                                       {
+                                             
+                                            ClosePos(Symbol());
+                                                   
+                                            
+                                             
+                                       }
+                                 }
+                       
+                              
+                                             
+                                 if(Los_EqPer>0)
+                                 {
+                                       if(-Eiq_per>Los_EqPer)
+                                       {
+                                            
+                                             ClosePos(Symbol());
+                                                   
+                                            
+                                             
+                                       }
+                                 
+                                 }
+                                 
+                                 if(Los_BalPer>0)
+                                 {
+                                       if(-Bal_per>Los_BalPer)
+                                       {
+                                             
+                                             ClosePos(Symbol());
+                                                   
+                                            
+                                             
+                                       }
+                                 
+                                 }
+                                 
+                                 if(Los_Amounts>0)
+                                 {
+                                 
+                                       if(-ProfitCheck()>Los_Amounts)
+                                       {
+                                            
+                                             ClosePos(Symbol());
+                                                   
+                                             
+                                             
+                                       }
+                                 }
+  }
+   
+   double ProfitCheck()
+   {
+      double profit=0;
+      int total  = OrdersTotal();
+         for (int cnt = total-1 ; cnt >=0 ; cnt--)
+         {
+            OrderSelect(cnt, SELECT_BY_POS, MODE_TRADES);
+            if(OrderSymbol()==Symbol())
+               profit+=OrderProfit()+OrderCommission()+OrderSwap();
+         }
+      return(profit);        
+   }
+  
+  void ClosePos(string sym)
+  {
+                                           for (int i=OrdersTotal()-1; i>=0; i--) 
+                                           {
+                                                   if (OrderSelect(i, SELECT_BY_POS, MODE_TRADES)  && (OrderMagicNumber()==Magic_Number)) 
+                                                   {
+                                                           if (OrderSymbol()==Symbol()) 
+                                                           {
+                                                                         if (OrderType()==OP_BUY) {
+                                                                           double pBid=MarketInfo(OrderSymbol(), MODE_BID);
+                                                                           OrderClose(OrderTicket(), OrderLots(), pBid, 6, clrBlue);
+                                                                         }
+                                                                         if (OrderType()==OP_SELL) {
+                                                                           double pAsk=MarketInfo(OrderSymbol(), MODE_ASK);
+                                                                           OrderClose(OrderTicket(), OrderLots(), pAsk, 3, clrRed);
+                                                                         }
+                                                                 
+                                                                          if (OrderType()==OP_BUYSTOP) {
+                                                                           OrderDelete(OrderTicket());
+                                                                         }
+                                                                         if (OrderType()==OP_SELLSTOP) {
+                                                                           OrderDelete(OrderTicket());
+                                                                         }
+                                                                   
+                                                                   
+                                                           }
+                                                   }
+                                           }
+                                           
+                                           LossCounter=0;
+                                           Counter=0;
+  
+  }
+  
+  
+void CreateBuy(double price)
+{
+   ObjectDelete("Buy");
+                        if(!ObjectCreate(0,"Buy",OBJ_HLINE,0,iTime(Symbol(),0,0),price)) 
+                       { 
+                             
+                       }
+                       else
+                       {
+                              ObjectSetInteger(0,"Buy",OBJPROP_COLOR,clrBlue);
+                              ObjectSetInteger(0,"Buy",OBJPROP_WIDTH,2);
+                       } 
+}
+
+void CreateSell(double price)
+{
+      ObjectDelete("Sell");
+                       if(!ObjectCreate(0,"Sell",OBJ_HLINE,0,iTime(Symbol(),0,0),price)) 
+                       { 
+                             
+                       }
+                       else
+                       {
+                              ObjectSetInteger(0,"Sell",OBJPROP_COLOR,clrRed);
+                              ObjectSetInteger(0,"Sell",OBJPROP_WIDTH,2);
+                       } 
+}
+
+   int LastOrderTicket()
+   {  
+          datetime lastOrderTime  = 0;
+          int  lastOrderTicket = -4; 
+          for(int j = 0 ; j<OrdersTotal() ; j++) 
+               {
+                  if (OrderSelect(j,SELECT_BY_POS,MODE_TRADES)==True)
+                        {
+                           if(OrderType()<2)
+                              {
+                                   if(OrderOpenTime()> lastOrderTime)
+                                         {
+                                             lastOrderTime   = OrderOpenTime();
+                                             lastOrderTicket = OrderTicket();
+                                         }
+                                    else     continue;
+                               }
+                           else   continue;
+                        }
+                   else      continue;
+                }
+    return(lastOrderTicket);
+    }
+    
+    
+    
+    void CloseOthers()
+    {
+            int tick = LastOrderTicket();
+            
+                for (int i=OrdersTotal()-1; i>=0; i--) 
+                {
+                        if (OrderSelect(i, SELECT_BY_POS, MODE_TRADES)  && (OrderMagicNumber()==Magic_Number)) 
+                        {
+                                if (OrderSymbol()==Symbol() && OrderTicket()!=tick) 
+                                {
+                                              if (OrderType()==OP_BUY) {
+                                              
+                                                double prof = OrderProfit()+OrderSwap()+OrderCommission();
+                                                double pBid=MarketInfo(OrderSymbol(), MODE_BID);
+                                                   if(OrderClose(OrderTicket(), OrderLots(), pBid, 6, clrBlue))
+                                                   {
+                                                         LossCounter += prof;
+                                                   }
+                                              }
+                                              if (OrderType()==OP_SELL) {
+                                              
+                                              double prof = OrderProfit()+OrderSwap()+OrderCommission();
+                                                double pAsk=MarketInfo(OrderSymbol(), MODE_ASK);
+                                                   if(OrderClose(OrderTicket(), OrderLots(), pAsk, 3, clrRed))
+                                                   {
+                                                         LossCounter += prof;
+                                                   }
+                                              }
+                                }
+                        }
+                }
+                
+                Comment(LossCounter);
+    }
+    
+    
+void CreateButton1(string btnName,string btnText,int &x,int y,int w,int h,color clrText,color clrBg,color clrBorder,int fontSize)
+  {
+   ObjectCreate(0,btnName,OBJ_BUTTON,0,0,0);
+   ObjectSetInteger(0,btnName,OBJPROP_XDISTANCE,x);
+   ObjectSetInteger(0,btnName,OBJPROP_YDISTANCE,y);
+   ObjectSetInteger(0,btnName,OBJPROP_XSIZE,w);
+   ObjectSetInteger(0,btnName,OBJPROP_YSIZE,h);
+   ObjectSetString(0,btnName,OBJPROP_TEXT,btnText);
+   ObjectSetInteger(0,btnName,OBJPROP_COLOR,clrText);
+   ObjectSetInteger(0,btnName,OBJPROP_BGCOLOR,clrBg);
+   ObjectSetInteger(0,btnName,OBJPROP_BORDER_COLOR,clrBorder);
+   ObjectSetInteger(0,btnName,OBJPROP_BORDER_TYPE,BORDER_FLAT);
+   ObjectSetInteger(0,btnName,OBJPROP_HIDDEN,true);
+   ObjectSetInteger(0,btnName,OBJPROP_STATE,false);
+   ObjectSetInteger(0,btnName,OBJPROP_FONTSIZE,fontSize);
+   x=x+w+10;
+  }
+  
+  
+  void OnChartEvent(const int id,const long &lparam,const double &dparam,const string &sparam)
+  {
+      if(sparam=="button1") // Buy
+        {
+               ClosePos(Symbol());
+               Counter=0;
+               ObjectSetInteger(0,"button1",OBJPROP_STATE,false);
+        }
+
+  
+  }
+  
+  double SpreadCount()
+  {
+      return(MarketInfo(_Symbol,MODE_SPREAD)/MultiplierPoint);
+  }
+  
+   double ProfitToPoint()
+   {  
+         
+          datetime lastOrderTime  = 0;
+          int  lastOrderTicket = -4; 
+          double com =0;
+          double lot = 0; 
+          
+               for(int j = 0 ; j<OrdersTotal() ; j++) 
+               {
+                  if (OrderSelect(j,SELECT_BY_POS,MODE_TRADES)==True)
+                        {
+                           if(OrderType()<2 && OrderSymbol()==_Symbol)
+                              {
+                                         if(OrderOpenTime()> lastOrderTime)
+                                         {
+                                             lastOrderTime   = OrderOpenTime();
+                                             lastOrderTicket = OrderTicket();
+                                             com = OrderCommission() +OrderSwap();
+                                             lot = OrderLots();
+                                         }
+                                    else     continue;
+                               }
+                           else   continue;
+                        }
+                   else      continue;
+                }
+        
+        
+     int myPoint = 0;
+     myPoint = (int)NormalizeDouble(com / (MarketInfo(Symbol(), MODE_TICKVALUE)/MultiplierPoint) / lot,0);
+     
+      
+     return (MathAbs(myPoint));
+   }
